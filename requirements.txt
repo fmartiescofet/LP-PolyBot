@@ -1,0 +1,4 @@
+pep8
+autopep8
+pillow
+antlr4-python3-runtime==4.8

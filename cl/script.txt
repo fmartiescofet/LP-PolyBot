@@ -1,0 +1,16 @@
+p23 := [ -1 0 0.5 1]
+print "hola"
+print p23
+draw " i.png", p23
+color p23, {1 0 0}
+draw "im2.png", p23
+
+print "--------"
+p1 := [0 0  0 1  1 1  0.2 0.8]
+color p1, {1 0 0}
+print p1
+area p1
+
+
+perimeter p1
+vertices p1
