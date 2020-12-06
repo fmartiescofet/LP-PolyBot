@@ -34,6 +34,7 @@ class Point:
         """>0 if ccw,<0 if cw, 0 if colinear"""
         return (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x)
     
+    @staticmethod
     def distance(p1,p2):
         return math.sqrt((p1.x-p2.x)**2 + (p1.y-p2.y)**2)
         
@@ -78,7 +79,39 @@ class ConvexPolygon:
     def bounding_box(self):
         Xs = [p.x for p in self.points]
         Ys = [p.y for p in self.points]
+        l = [Point(min(Xs),min(Ys)), Point(min(Xs),max(Ys)), Point(max(Xs),min(Ys)),Point(max(Xs),max(Ys))]
+        return ConvexPolygon.build_from_points(l)
+        #return (min(Xs),max(Xs),min(Ys),max(Ys))
+    
+    def bounding_box_tuple(self):
+        Xs = [p.x for p in self.points]
+        Ys = [p.y for p in self.points]
         return (min(Xs),max(Xs),min(Ys),max(Ys))
+
+    def centroid(self):
+        det = 0
+        centroidX = 0
+        centroidY = 0
+        n = len(self.points)
+        for i in range(0,n):
+            tmp = self.points[i].x * self.points[(i+1)%n].y - self.points[(i+1)%n].x * self.points[i].y
+            det += tmp
+            centroidX += (self.points[i].x + self.points[(i+1)%n].x)*tmp
+            centroidY += (self.points[i].y + self.points[(i+1)%n].y)*tmp
+
+        return (centroidX/(3*det), centroidY/(3*det))
+    
+    def is_regular(self):
+        """
+        We assume that a polygon of 1 or 2 vertexs is regular
+        """
+        n = len(self.points)
+        if (n < 3): return True
+        side = Point.distance(self.points[0],self.points[1])
+
+        for i in range (1,n):
+            if Point.distance(self.points[i],self.points[(i+1)%n]) != side: return False
+        return True
     
 
     @staticmethod
@@ -92,7 +125,7 @@ class ConvexPolygon:
     
     @staticmethod
     def draw_polygons(polygons, filename="image.png"):
-        bboxes = [pol.bounding_box() for pol in polygons]
+        bboxes = [pol.bounding_box_tuple() for pol in polygons]
         x_min = min([b[0] for b in bboxes])
         x_max = max([b[1] for b in bboxes])
         y_min = min([b[2] for b in bboxes])
@@ -120,8 +153,8 @@ class ConvexPolygon:
         if len(points) < 3:
             return ConvexPolygon(points,color)
 
-        # Lowest most point, in case of tie the leftest one
-        p1 = min(points, key=lambda p: (p.y, p.x))
+        # Leftest point, in case of tie the lowest one
+        p1 = min(points, key=lambda p: (p.x, p.y))
         l = [p for p in points if p != p1]
         """for e in map(lambda p: ((p.y - p1.y) / (p.x - p1.x),
                                 (p.y - p1.y)**2 + (p.x - p1.x)**2) if (p.x != p1.x) else (math.inf,
@@ -136,7 +169,7 @@ class ConvexPolygon:
 
         q = [p1]
         for point in l:
-            while len(q) > 1 and Point.left_of(q[-2], q[-1], point):
+            while len(q) > 1 and Point.ccw(q[-2], q[-1], point) > 0:
                 q.pop()
             q.append(point)
 

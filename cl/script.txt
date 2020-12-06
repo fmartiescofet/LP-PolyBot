@@ -1,7 +1,7 @@
 p23 := [ -1 0 0.5 1]
 print "hola"
 print p23
-draw " i.png", p23
+draw "i.png", p23
 color p23, {1 0 0}
 draw "im2.png", p23
 
