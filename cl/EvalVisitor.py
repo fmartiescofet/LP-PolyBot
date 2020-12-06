@@ -84,11 +84,32 @@ class EvalVisitor(ParseTreeVisitor):
             print (self.symbols[id].number_vertices())
         else:
             raise WrongArgumentException(id + " Not defined")
+        
+    # Visit a parse tree produced by PolyBotParser#regularl.
+    def visitRegularl(self, ctx:PolyBotParser.RegularlContext):
+        id = self.visit(ctx.identifier())
+        if id in self.symbols:
+            if self.symbols[id].is_regular():
+                print ('yes')
+            else:
+                print ('no')
+        else:
+            raise WrongArgumentException(id + " Not defined")
 
 
     # Visit a parse tree produced by PolyBotParser#insidel.
     def visitInsidel(self, ctx:PolyBotParser.InsidelContext):
-        return self.visitChildren(ctx)
+        id0 = self.visit(ctx.identifier(0))
+        id1 = self.visit(ctx.identifier(1))
+        if id0 in self.symbols and id1 in self.symbols:
+            if self.symbols[id1].inside_polygon(self.symbols[id0]):
+                print ('yes')
+            else:
+                print ('no')
+        elif id0 not in self.symbols:
+            raise WrongArgumentException(id0 + " Not defined")
+        else:
+            raise WrongArgumentException(id1 + " Not defined")
 
 
     # Visit a parse tree produced by PolyBotParser#drawl.

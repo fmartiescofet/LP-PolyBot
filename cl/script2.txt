@@ -1,0 +1,6 @@
+p := [ 0 0 1 1 0 2]
+regular p
+print p
+p2 := [0 0]
+
+inside p, p2

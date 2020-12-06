@@ -49,13 +49,18 @@ class ConvexPolygon:
     
     def inside(self, point):
         n = len(self.points)
-        if n <=2: return False
+        print(point.x,point.y)
+        if n == 0: return False
+        if n == 1:
+            return self.points[0] == point
+        if n == 2:
+            return Point.ccw(self.points[0],self.points[1],point) == 0
         for i in range(0,n):
             if Point.ccw(self.points[i],self.points[(i+1)%n],point) > 0: return False
         return True
     
     def inside_polygon(self, polygon):
-        for point in polygon.points:
+        for point in polygon.points:            
             if not self.inside(point): return False
         return True
 
@@ -77,6 +82,9 @@ class ConvexPolygon:
         return abs(area/2.0)
     
     def bounding_box(self):
+        """
+        TODO: Pensar que passa en cas llista buida
+        """
         Xs = [p.x for p in self.points]
         Ys = [p.y for p in self.points]
         l = [Point(min(Xs),min(Ys)), Point(min(Xs),max(Ys)), Point(max(Xs),min(Ys)),Point(max(Xs),max(Ys))]
@@ -84,11 +92,23 @@ class ConvexPolygon:
         #return (min(Xs),max(Xs),min(Ys),max(Ys))
     
     def bounding_box_tuple(self):
+        """
+        TODO: Pensar que passa en cas llista buida
+        """
         Xs = [p.x for p in self.points]
         Ys = [p.y for p in self.points]
         return (min(Xs),max(Xs),min(Ys),max(Ys))
 
     def centroid(self):
+        """
+        TODO: Pensar que passa en cas llista buida
+        """
+        n = len(self.points)
+        if n == 1: return self.points[0]
+        if n == 2:
+            x = (self.points[0].x + self.points[1].x) /2.0
+            y = (self.points[0].y + self.points[1].y) /2.0
+            return Point(x,y)
         det = 0
         centroidX = 0
         centroidY = 0
@@ -99,7 +119,7 @@ class ConvexPolygon:
             centroidX += (self.points[i].x + self.points[(i+1)%n].x)*tmp
             centroidY += (self.points[i].y + self.points[(i+1)%n].y)*tmp
 
-        return (centroidX/(3*det), centroidY/(3*det))
+        return Point(centroidX/(3*det), centroidY/(3*det))
     
     def is_regular(self):
         """
@@ -151,6 +171,7 @@ class ConvexPolygon:
     @staticmethod
     def build_from_points(points, color = None):
         if len(points) < 3:
+            points.sort(key=lambda p: (p.x, p.y))
             return ConvexPolygon(points,color)
 
         # Leftest point, in case of tie the lowest one

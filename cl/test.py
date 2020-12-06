@@ -8,7 +8,7 @@ from EvalVisitor import EvalVisitor
 #input_stream = InputStream("p23 := [ -1 0 0.5 1]\n")
 #input_stream = InputStream('p23 := [ -1 0 0.5 1]\nprint "hola"\nprint p23\ncolor p23, {1 0 0}\ndraw "im.png", p23\n')
 
-input_stream = FileStream("script.txt")
+input_stream = FileStream("script2.txt")
 
 lexer = PolyBotLexer(input_stream)
 token_stream = CommonTokenStream(lexer)

@@ -2,8 +2,10 @@ grammar PolyBot;
 
 root : (line '\n'+)+ EOF;
 
-line : assign | printl | comment | colorl | areal | perimeterl | verticesl | insidel | drawl;
+line : assign | printl | comment | colorl | areal | perimeterl | verticesl | insidel | drawl | regularl | expr;
 
+
+expr: expr INT expr | expr UNION expr | BBOX expr | identifier;
 assign: identifier ':=' LEFT_SQUARE point* RIGHT_SQUARE;
 
 printl: 'print' ((QMARK string QMARK)|identifier);
@@ -12,8 +14,10 @@ colorl: 'color' identifier ',' LEFT_BRACE color RIGHT_BRACE;
 areal: 'area' identifier;
 perimeterl: 'perimeter' identifier;
 verticesl: 'vertices' identifier;
-insidel: 'inside' identifier identifier;
+insidel: 'inside' identifier ',' identifier;
 drawl: 'draw' QMARK filename QMARK (',' identifier)+;
+regularl: 'regular' identifier;
+
 
 point: NUM NUM;
 color: NUM NUM NUM;
@@ -37,4 +41,7 @@ RIGHT_BRACE : '}' ;
 QMARK: '"';
 DOT: '.';
 EXT: '.png';
+INT: '*';
+UNION: '+';
+BBOX: '#';
 WS : [ \t]+ -> skip;

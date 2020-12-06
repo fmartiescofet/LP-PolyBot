@@ -19,6 +19,11 @@ class PolyBotVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PolyBotParser#expr.
+    def visitExpr(self, ctx:PolyBotParser.ExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PolyBotParser#assign.
     def visitAssign(self, ctx:PolyBotParser.AssignContext):
         return self.visitChildren(ctx)
@@ -61,6 +66,11 @@ class PolyBotVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PolyBotParser#drawl.
     def visitDrawl(self, ctx:PolyBotParser.DrawlContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PolyBotParser#regularl.
+    def visitRegularl(self, ctx:PolyBotParser.RegularlContext):
         return self.visitChildren(ctx)
 
 
