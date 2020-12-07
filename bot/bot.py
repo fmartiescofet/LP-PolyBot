@@ -1,23 +1,29 @@
+from cl.EvalVisitor import EvalVisitor
+from cl.PolyBotParser import PolyBotParser
+from cl.PolyBotLexer import PolyBotLexer
+import sys
+from polygons import Point, ConvexPolygon, WrongArgumentException
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 from antlr4 import *
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir) 
-from polygons import Point, ConvexPolygon, WrongArgumentException
-
+import os
 import sys
-from cl.PolyBotLexer import PolyBotLexer
-from cl.PolyBotParser import PolyBotParser
-from cl.EvalVisitor import EvalVisitor
+import inspect
+current_dir = os.path.dirname(
+    os.path.abspath(
+        inspect.getfile(
+            inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir)
 
 
-
-
-# defineix una funció que saluda i que s'executarà quan el bot rebi el missatge /start
+# defineix una funció que saluda i que s'executarà quan el bot rebi el
+# missatge /start
 def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Hola! Soc un bot bàsic.")
+    context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="Hola! Soc un bot bàsic.")
+
 
 def message_handler(update, context):
     try:
@@ -32,12 +38,19 @@ def message_handler(update, context):
         context.user_data['symbols'], text, files = evalV.visit(tree)
 
         for img in files:
-            context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(img, 'rb'))
+            context.bot.send_photo(
+                chat_id=update.effective_chat.id,
+                photo=open(
+                    img,
+                    'rb'))
             os.remove(img)
         if text != '':
-            context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=text)
     except WrongArgumentException as e:
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Error: "+ str(e))
+        context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text="Error: " + str(e))
 
 
 # declara una constant amb el access token que llegeix de token.txt
