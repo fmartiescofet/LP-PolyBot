@@ -20,29 +20,56 @@ class EvalVisitor(ParseTreeVisitor):
         lines = [n for n in ctx.getChildren()]
         for line in lines:
             self.visit(line)
+    
+    # Visit a parse tree produced by PolyBotParser#expr.
+    def visitExpr(self, ctx:PolyBotParser.ExprContext):
+        l = [n for n in ctx.getChildren()]
+        if len(l) == 1:
+            return self.visit(l[0])
+        elif len(l) == 2:
+            if l[0].getText() == '#':
+                return self.visit(l[1]).bounding_box()
+            elif l[0].getText() == '!':
+                n = self.visit(ctx.integer())
+                return ConvexPolygon.random_polygon(n)
+        elif len(l) == 3:
+            pol0 = self.visit(l[0])
+            pol1 = self.visit(l[2])
+            if l[1].getText() == '*':
+                return ConvexPolygon.intersection(pol0,pol1)
+            elif l[1].getText() == '+':
+                return ConvexPolygon.union(pol0,pol1)
+    
+    # Visit a parse tree produced by PolyBotParser#pointlist.
+    def visitPointlist(self, ctx:PolyBotParser.PointlistContext):
+        l = []
+        for point in ctx.point():
+            l.append(self.visit(point))
+        return ConvexPolygon.build_from_points(l)
 
 
     # Visit a parse tree produced by PolyBotParser#assign.
     def visitAssign(self, ctx:PolyBotParser.AssignContext):
-        id = self.visit(ctx.identifier())
-        l = []
-        for point in ctx.point():
-            l.append(self.visit(point))
-        self.symbols[id] = ConvexPolygon.build_from_points(l)
+        id = ctx.identifier().getText()
+        self.symbols[id] = self.visit(ctx.expr())
+    
+    # Visit a parse tree produced by PolyBotParser#equall.
+    def visitEquall(self, ctx:PolyBotParser.EquallContext):
+        pol0 = self.visit(ctx.expr(0))
+        pol1 = self.visit(ctx.expr(1))
+        if pol0 == pol1:
+            print ('yes')
+        else:
+            print ('no')
 
 
     # Visit a parse tree produced by PolyBotParser#printl.
     def visitPrintl(self, ctx:PolyBotParser.PrintlContext):
-        if ctx.identifier():
-            id = self.visit(ctx.identifier())
-            if id in self.symbols:
-                print (" ".join(map(str,self.symbols[id].points)))
-            else:
-                raise WrongArgumentException(id + " Not defined")
-
+        if ctx.expr():
+            pol = self.visit(ctx.expr())
+            print (" ".join(map(str,pol.points)))
         elif ctx.string():
             print(self.visit(ctx.string()))
-        return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by PolyBotParser#comment.
@@ -52,76 +79,54 @@ class EvalVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PolyBotParser#colorl.
     def visitColorl(self, ctx:PolyBotParser.ColorlContext):
-        id = self.visit(ctx.identifier())
-        if id in self.symbols:
-            self.symbols[id].color = self.visit(ctx.color())
-        else:
-            raise WrongArgumentException(id + " Not defined")
-
+        pol = self.visit(ctx.identifier())
+        pol.color = self.visit(ctx.color())
 
     # Visit a parse tree produced by PolyBotParser#areal.
     def visitAreal(self, ctx:PolyBotParser.ArealContext):
-        id = self.visit(ctx.identifier())
-        if id in self.symbols:
-            print (format(self.symbols[id].area(),".3f"))
-        else:
-            raise WrongArgumentException(id + " Not defined")
-
+        pol = self.visit(ctx.expr())
+        print (format(pol.area(),".3f"))
 
     # Visit a parse tree produced by PolyBotParser#perimeterl.
     def visitPerimeterl(self, ctx:PolyBotParser.PerimeterlContext):
-        id = self.visit(ctx.identifier())
-        if id in self.symbols:
-            print (format(self.symbols[id].perimeter(),".3f"))
-        else:
-            raise WrongArgumentException(id + " Not defined")
-
-
+        pol = self.visit(ctx.expr())
+        print (format(pol.perimeter(),".3f"))
+    
     # Visit a parse tree produced by PolyBotParser#verticesl.
     def visitVerticesl(self, ctx:PolyBotParser.VerticeslContext):
-        id = self.visit(ctx.identifier())
-        if id in self.symbols:
-            print (self.symbols[id].number_vertices())
-        else:
-            raise WrongArgumentException(id + " Not defined")
+        pol = self.visit(ctx.expr())
+        print (pol.number_vertices())
+    
+    # Visit a parse tree produced by PolyBotParser#centroidl.
+    def visitCentroidl(self, ctx:PolyBotParser.CentroidlContext):
+        pol = self.visit(ctx.expr())
+        print (pol.centroid())
         
     # Visit a parse tree produced by PolyBotParser#regularl.
     def visitRegularl(self, ctx:PolyBotParser.RegularlContext):
-        id = self.visit(ctx.identifier())
-        if id in self.symbols:
-            if self.symbols[id].is_regular():
-                print ('yes')
-            else:
-                print ('no')
+        pol = self.visit(ctx.expr())
+        if pol.is_regular():
+            print ('yes')
         else:
-            raise WrongArgumentException(id + " Not defined")
-
+            print ('no')
+    
 
     # Visit a parse tree produced by PolyBotParser#insidel.
     def visitInsidel(self, ctx:PolyBotParser.InsidelContext):
-        id0 = self.visit(ctx.identifier(0))
-        id1 = self.visit(ctx.identifier(1))
-        if id0 in self.symbols and id1 in self.symbols:
-            if self.symbols[id1].inside_polygon(self.symbols[id0]):
-                print ('yes')
-            else:
-                print ('no')
-        elif id0 not in self.symbols:
-            raise WrongArgumentException(id0 + " Not defined")
+        pol0 = self.visit(ctx.expr(0))
+        pol1 = self.visit(ctx.expr(1))
+        if pol1.inside_polygon(pol0):
+            print ('yes')
         else:
-            raise WrongArgumentException(id1 + " Not defined")
+            print ('no')
 
 
     # Visit a parse tree produced by PolyBotParser#drawl.
     def visitDrawl(self, ctx:PolyBotParser.DrawlContext):
         filename = self.visit(ctx.filename())
         l = []
-        for elem in ctx.identifier():
-            id = self.visit(elem)
-            if id in self.symbols:
-                l.append(self.symbols[id])
-            else:
-                raise WrongArgumentException(id + " Not defined")
+        for elem in ctx.expr():
+            l.append(self.visit(elem))
         ConvexPolygon.draw_polygons(l,filename)
 
 
@@ -144,11 +149,19 @@ class EvalVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PolyBotParser#identifier.
     def visitIdentifier(self, ctx:PolyBotParser.IdentifierContext):
-        return ctx.getText()
+        id = ctx.getText()
+        if id in self.symbols:
+            return self.symbols[id]
+        else:
+            raise WrongArgumentException(id + " Not defined")
     
     # Visit a parse tree produced by PolyBotParser#filename.
     def visitFilename(self, ctx:PolyBotParser.FilenameContext):
         return ctx.getText()
+    
+    # Visit a parse tree produced by PolyBotParser#integer.
+    def visitInteger(self, ctx:PolyBotParser.IntegerContext):
+        return int(ctx.getText())
 
 
 

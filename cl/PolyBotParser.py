@@ -11,58 +11,71 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3 ")
-        buf.write("\u009a\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3$")
+        buf.write("\u00b6\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
-        buf.write("\3\2\3\2\6\2)\n\2\r\2\16\2*\6\2-\n\2\r\2\16\2.\3\2\3\2")
-        buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3>\n\3")
-        buf.write("\3\4\3\4\3\4\3\4\5\4D\n\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4")
-        buf.write("L\n\4\f\4\16\4O\13\4\3\5\3\5\3\5\3\5\7\5U\n\5\f\5\16\5")
-        buf.write("X\13\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\5\6b\n\6\3\7\3")
-        buf.write("\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\n\3\n")
-        buf.write("\3\n\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3")
-        buf.write("\r\3\r\3\r\6\r\u0082\n\r\r\r\16\r\u0083\3\16\3\16\3\16")
-        buf.write("\3\17\3\17\3\17\3\20\3\20\3\20\3\20\3\21\7\21\u0091\n")
-        buf.write("\21\f\21\16\21\u0094\13\21\3\22\3\22\3\23\3\23\3\23\2")
-        buf.write("\3\6\24\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$\2\3")
-        buf.write("\4\2\3\3\17\17\2\u009a\2,\3\2\2\2\4=\3\2\2\2\6C\3\2\2")
-        buf.write("\2\bP\3\2\2\2\n[\3\2\2\2\fc\3\2\2\2\16f\3\2\2\2\20m\3")
-        buf.write("\2\2\2\22p\3\2\2\2\24s\3\2\2\2\26v\3\2\2\2\30{\3\2\2\2")
-        buf.write("\32\u0085\3\2\2\2\34\u0088\3\2\2\2\36\u008b\3\2\2\2 \u0092")
-        buf.write("\3\2\2\2\"\u0095\3\2\2\2$\u0097\3\2\2\2&(\5\4\3\2\')\7")
-        buf.write("\3\2\2(\'\3\2\2\2)*\3\2\2\2*(\3\2\2\2*+\3\2\2\2+-\3\2")
-        buf.write("\2\2,&\3\2\2\2-.\3\2\2\2.,\3\2\2\2./\3\2\2\2/\60\3\2\2")
-        buf.write("\2\60\61\7\2\2\3\61\3\3\2\2\2\62>\5\b\5\2\63>\5\n\6\2")
-        buf.write("\64>\5\f\7\2\65>\5\16\b\2\66>\5\20\t\2\67>\5\22\n\28>")
-        buf.write("\5\24\13\29>\5\26\f\2:>\5\30\r\2;>\5\32\16\2<>\5\6\4\2")
-        buf.write("=\62\3\2\2\2=\63\3\2\2\2=\64\3\2\2\2=\65\3\2\2\2=\66\3")
-        buf.write("\2\2\2=\67\3\2\2\2=8\3\2\2\2=9\3\2\2\2=:\3\2\2\2=;\3\2")
-        buf.write("\2\2=<\3\2\2\2>\5\3\2\2\2?@\b\4\1\2@A\7\37\2\2AD\5\6\4")
-        buf.write("\4BD\5$\23\2C?\3\2\2\2CB\3\2\2\2DM\3\2\2\2EF\f\6\2\2F")
-        buf.write("G\7\35\2\2GL\5\6\4\7HI\f\5\2\2IJ\7\36\2\2JL\5\6\4\6KE")
-        buf.write("\3\2\2\2KH\3\2\2\2LO\3\2\2\2MK\3\2\2\2MN\3\2\2\2N\7\3")
-        buf.write("\2\2\2OM\3\2\2\2PQ\5$\23\2QR\7\4\2\2RV\7\26\2\2SU\5\34")
-        buf.write("\17\2TS\3\2\2\2UX\3\2\2\2VT\3\2\2\2VW\3\2\2\2WY\3\2\2")
-        buf.write("\2XV\3\2\2\2YZ\7\27\2\2Z\t\3\2\2\2[a\7\5\2\2\\]\7\32\2")
-        buf.write("\2]^\5 \21\2^_\7\32\2\2_b\3\2\2\2`b\5$\23\2a\\\3\2\2\2")
-        buf.write("a`\3\2\2\2b\13\3\2\2\2cd\7\6\2\2de\5 \21\2e\r\3\2\2\2")
-        buf.write("fg\7\7\2\2gh\5$\23\2hi\7\b\2\2ij\7\30\2\2jk\5\36\20\2")
-        buf.write("kl\7\31\2\2l\17\3\2\2\2mn\7\t\2\2no\5$\23\2o\21\3\2\2")
-        buf.write("\2pq\7\n\2\2qr\5$\23\2r\23\3\2\2\2st\7\13\2\2tu\5$\23")
-        buf.write("\2u\25\3\2\2\2vw\7\f\2\2wx\5$\23\2xy\7\b\2\2yz\5$\23\2")
-        buf.write("z\27\3\2\2\2{|\7\r\2\2|}\7\32\2\2}~\5\"\22\2~\u0081\7")
-        buf.write("\32\2\2\177\u0080\7\b\2\2\u0080\u0082\5$\23\2\u0081\177")
-        buf.write("\3\2\2\2\u0082\u0083\3\2\2\2\u0083\u0081\3\2\2\2\u0083")
-        buf.write("\u0084\3\2\2\2\u0084\31\3\2\2\2\u0085\u0086\7\16\2\2\u0086")
-        buf.write("\u0087\5$\23\2\u0087\33\3\2\2\2\u0088\u0089\7\22\2\2\u0089")
-        buf.write("\u008a\7\22\2\2\u008a\35\3\2\2\2\u008b\u008c\7\22\2\2")
-        buf.write("\u008c\u008d\7\22\2\2\u008d\u008e\7\22\2\2\u008e\37\3")
-        buf.write("\2\2\2\u008f\u0091\n\2\2\2\u0090\u008f\3\2\2\2\u0091\u0094")
-        buf.write("\3\2\2\2\u0092\u0090\3\2\2\2\u0092\u0093\3\2\2\2\u0093")
-        buf.write("!\3\2\2\2\u0094\u0092\3\2\2\2\u0095\u0096\7\20\2\2\u0096")
-        buf.write("#\3\2\2\2\u0097\u0098\7\21\2\2\u0098%\3\2\2\2\f*.=CKM")
-        buf.write("Va\u0083\u0092")
+        buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\3\2\3\2\6")
+        buf.write("\2\62\n\2\r\2\16\2\63\5\2\66\n\2\6\28\n\2\r\2\16\29\3")
+        buf.write("\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
+        buf.write("\3\3\5\3K\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4T\n\4\3\4")
+        buf.write("\3\4\3\4\3\4\3\4\3\4\7\4\\\n\4\f\4\16\4_\13\4\3\5\3\5")
+        buf.write("\7\5c\n\5\f\5\16\5f\13\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3")
+        buf.write("\7\3\7\3\7\3\7\3\7\5\7t\n\7\3\b\3\b\3\b\3\t\3\t\3\t\3")
+        buf.write("\t\3\t\3\t\3\t\3\n\3\n\3\n\3\13\3\13\3\13\3\f\3\f\3\f")
+        buf.write("\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\6\16")
+        buf.write("\u0094\n\16\r\16\16\16\u0095\3\17\3\17\3\17\3\20\3\20")
+        buf.write("\3\20\3\20\3\20\3\21\3\21\3\21\3\22\3\22\3\22\3\23\3\23")
+        buf.write("\3\23\3\23\3\24\7\24\u00ab\n\24\f\24\16\24\u00ae\13\24")
+        buf.write("\3\25\3\25\3\26\3\26\3\27\3\27\3\27\2\3\6\30\2\4\6\b\n")
+        buf.write("\f\16\20\22\24\26\30\32\34\36 \"$&(*,\2\3\4\2\3\3\21\21")
+        buf.write("\2\u00b7\2\67\3\2\2\2\4J\3\2\2\2\6S\3\2\2\2\b`\3\2\2\2")
+        buf.write("\ni\3\2\2\2\fm\3\2\2\2\16u\3\2\2\2\20x\3\2\2\2\22\177")
+        buf.write("\3\2\2\2\24\u0082\3\2\2\2\26\u0085\3\2\2\2\30\u0088\3")
+        buf.write("\2\2\2\32\u008d\3\2\2\2\34\u0097\3\2\2\2\36\u009a\3\2")
+        buf.write("\2\2 \u009f\3\2\2\2\"\u00a2\3\2\2\2$\u00a5\3\2\2\2&\u00ac")
+        buf.write("\3\2\2\2(\u00af\3\2\2\2*\u00b1\3\2\2\2,\u00b3\3\2\2\2")
+        buf.write(".\65\5\4\3\2/\66\7\2\2\3\60\62\7\3\2\2\61\60\3\2\2\2\62")
+        buf.write("\63\3\2\2\2\63\61\3\2\2\2\63\64\3\2\2\2\64\66\3\2\2\2")
+        buf.write("\65/\3\2\2\2\65\61\3\2\2\2\668\3\2\2\2\67.\3\2\2\289\3")
+        buf.write("\2\2\29\67\3\2\2\29:\3\2\2\2:;\3\2\2\2;<\7\2\2\3<\3\3")
+        buf.write("\2\2\2=K\5\n\6\2>K\5\f\7\2?K\5\16\b\2@K\5\20\t\2AK\5\22")
+        buf.write("\n\2BK\5\24\13\2CK\5\26\f\2DK\5\30\r\2EK\5\32\16\2FK\5")
+        buf.write("\34\17\2GK\5\6\4\2HK\5\36\20\2IK\5 \21\2J=\3\2\2\2J>\3")
+        buf.write("\2\2\2J?\3\2\2\2J@\3\2\2\2JA\3\2\2\2JB\3\2\2\2JC\3\2\2")
+        buf.write("\2JD\3\2\2\2JE\3\2\2\2JF\3\2\2\2JG\3\2\2\2JH\3\2\2\2J")
+        buf.write("I\3\2\2\2K\5\3\2\2\2LM\b\4\1\2MN\7\"\2\2NT\5\6\4\6OT\5")
+        buf.write("*\26\2PT\5\b\5\2QR\7#\2\2RT\5,\27\2SL\3\2\2\2SO\3\2\2")
+        buf.write("\2SP\3\2\2\2SQ\3\2\2\2T]\3\2\2\2UV\f\b\2\2VW\7 \2\2W\\")
+        buf.write("\5\6\4\tXY\f\7\2\2YZ\7!\2\2Z\\\5\6\4\b[U\3\2\2\2[X\3\2")
+        buf.write("\2\2\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2^\7\3\2\2\2_]\3\2\2")
+        buf.write("\2`d\7\31\2\2ac\5\"\22\2ba\3\2\2\2cf\3\2\2\2db\3\2\2\2")
+        buf.write("de\3\2\2\2eg\3\2\2\2fd\3\2\2\2gh\7\32\2\2h\t\3\2\2\2i")
+        buf.write("j\5*\26\2jk\7\4\2\2kl\5\6\4\2l\13\3\2\2\2ms\7\5\2\2no")
+        buf.write("\7\35\2\2op\5&\24\2pq\7\35\2\2qt\3\2\2\2rt\5\6\4\2sn\3")
+        buf.write("\2\2\2sr\3\2\2\2t\r\3\2\2\2uv\7\6\2\2vw\5&\24\2w\17\3")
+        buf.write("\2\2\2xy\7\7\2\2yz\5*\26\2z{\7\b\2\2{|\7\33\2\2|}\5$\23")
+        buf.write("\2}~\7\34\2\2~\21\3\2\2\2\177\u0080\7\t\2\2\u0080\u0081")
+        buf.write("\5\6\4\2\u0081\23\3\2\2\2\u0082\u0083\7\n\2\2\u0083\u0084")
+        buf.write("\5\6\4\2\u0084\25\3\2\2\2\u0085\u0086\7\13\2\2\u0086\u0087")
+        buf.write("\5\6\4\2\u0087\27\3\2\2\2\u0088\u0089\7\f\2\2\u0089\u008a")
+        buf.write("\5\6\4\2\u008a\u008b\7\b\2\2\u008b\u008c\5\6\4\2\u008c")
+        buf.write("\31\3\2\2\2\u008d\u008e\7\r\2\2\u008e\u008f\7\35\2\2\u008f")
+        buf.write("\u0090\5(\25\2\u0090\u0093\7\35\2\2\u0091\u0092\7\b\2")
+        buf.write("\2\u0092\u0094\5\6\4\2\u0093\u0091\3\2\2\2\u0094\u0095")
+        buf.write("\3\2\2\2\u0095\u0093\3\2\2\2\u0095\u0096\3\2\2\2\u0096")
+        buf.write("\33\3\2\2\2\u0097\u0098\7\16\2\2\u0098\u0099\5\6\4\2\u0099")
+        buf.write("\35\3\2\2\2\u009a\u009b\7\17\2\2\u009b\u009c\5\6\4\2\u009c")
+        buf.write("\u009d\7\b\2\2\u009d\u009e\5\6\4\2\u009e\37\3\2\2\2\u009f")
+        buf.write("\u00a0\7\20\2\2\u00a0\u00a1\5\6\4\2\u00a1!\3\2\2\2\u00a2")
+        buf.write("\u00a3\7\25\2\2\u00a3\u00a4\7\25\2\2\u00a4#\3\2\2\2\u00a5")
+        buf.write("\u00a6\7\25\2\2\u00a6\u00a7\7\25\2\2\u00a7\u00a8\7\25")
+        buf.write("\2\2\u00a8%\3\2\2\2\u00a9\u00ab\n\2\2\2\u00aa\u00a9\3")
+        buf.write("\2\2\2\u00ab\u00ae\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ac\u00ad")
+        buf.write("\3\2\2\2\u00ad\'\3\2\2\2\u00ae\u00ac\3\2\2\2\u00af\u00b0")
+        buf.write("\7\22\2\2\u00b0)\3\2\2\2\u00b1\u00b2\7\23\2\2\u00b2+\3")
+        buf.write("\2\2\2\u00b3\u00b4\7\24\2\2\u00b4-\3\2\2\2\r\63\659JS")
+        buf.write("[]ds\u0095\u00ac")
         return buf.getvalue()
 
 
@@ -78,42 +91,49 @@ class PolyBotParser ( Parser ):
 
     literalNames = [ "<INVALID>", "'\n'", "':='", "'print'", "'//'", "'color'", 
                      "','", "'area'", "'perimeter'", "'vertices'", "'inside'", 
-                     "'draw'", "'regular'", "'\r'", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "'-'", "<INVALID>", "<INVALID>", "'['", 
-                     "']'", "'{'", "'}'", "'\"'", "'.'", "'.png'", "'*'", 
-                     "'+'", "'#'" ]
+                     "'draw'", "'regular'", "'equal'", "'centroid'", "'\r'", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "'-'", "<INVALID>", "<INVALID>", "'['", "']'", "'{'", 
+                     "'}'", "'\"'", "'.'", "'.png'", "'*'", "'+'", "'#'", 
+                     "'!'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "FNAME", "VALID_ID", "NUM", 
-                      "MINUS", "DIGIT", "LETTER", "LEFT_SQUARE", "RIGHT_SQUARE", 
-                      "LEFT_BRACE", "RIGHT_BRACE", "QMARK", "DOT", "EXT", 
-                      "INT", "UNION", "BBOX", "WS" ]
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "FNAME", "VALID_ID", "INT", "NUM", "MINUS", "DIGIT", 
+                      "LETTER", "LEFT_SQUARE", "RIGHT_SQUARE", "LEFT_BRACE", 
+                      "RIGHT_BRACE", "QMARK", "DOT", "EXT", "INTERSECTION", 
+                      "UNION", "BBOX", "RAND", "WS" ]
 
     RULE_root = 0
     RULE_line = 1
     RULE_expr = 2
-    RULE_assign = 3
-    RULE_printl = 4
-    RULE_comment = 5
-    RULE_colorl = 6
-    RULE_areal = 7
-    RULE_perimeterl = 8
-    RULE_verticesl = 9
-    RULE_insidel = 10
-    RULE_drawl = 11
-    RULE_regularl = 12
-    RULE_point = 13
-    RULE_color = 14
-    RULE_string = 15
-    RULE_filename = 16
-    RULE_identifier = 17
+    RULE_pointlist = 3
+    RULE_assign = 4
+    RULE_printl = 5
+    RULE_comment = 6
+    RULE_colorl = 7
+    RULE_areal = 8
+    RULE_perimeterl = 9
+    RULE_verticesl = 10
+    RULE_insidel = 11
+    RULE_drawl = 12
+    RULE_regularl = 13
+    RULE_equall = 14
+    RULE_centroidl = 15
+    RULE_point = 16
+    RULE_color = 17
+    RULE_string = 18
+    RULE_filename = 19
+    RULE_identifier = 20
+    RULE_integer = 21
 
-    ruleNames =  [ "root", "line", "expr", "assign", "printl", "comment", 
-                   "colorl", "areal", "perimeterl", "verticesl", "insidel", 
-                   "drawl", "regularl", "point", "color", "string", "filename", 
-                   "identifier" ]
+    ruleNames =  [ "root", "line", "expr", "pointlist", "assign", "printl", 
+                   "comment", "colorl", "areal", "perimeterl", "verticesl", 
+                   "insidel", "drawl", "regularl", "equall", "centroidl", 
+                   "point", "color", "string", "filename", "identifier", 
+                   "integer" ]
 
     EOF = Token.EOF
     T__0=1
@@ -129,23 +149,27 @@ class PolyBotParser ( Parser ):
     T__10=11
     T__11=12
     T__12=13
-    FNAME=14
-    VALID_ID=15
-    NUM=16
-    MINUS=17
-    DIGIT=18
-    LETTER=19
-    LEFT_SQUARE=20
-    RIGHT_SQUARE=21
-    LEFT_BRACE=22
-    RIGHT_BRACE=23
-    QMARK=24
-    DOT=25
-    EXT=26
-    INT=27
-    UNION=28
-    BBOX=29
-    WS=30
+    T__13=14
+    T__14=15
+    FNAME=16
+    VALID_ID=17
+    INT=18
+    NUM=19
+    MINUS=20
+    DIGIT=21
+    LETTER=22
+    LEFT_SQUARE=23
+    RIGHT_SQUARE=24
+    LEFT_BRACE=25
+    RIGHT_BRACE=26
+    QMARK=27
+    DOT=28
+    EXT=29
+    INTERSECTION=30
+    UNION=31
+    BBOX=32
+    RAND=33
+    WS=34
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -162,8 +186,11 @@ class PolyBotParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def EOF(self):
-            return self.getToken(PolyBotParser.EOF, 0)
+        def EOF(self, i:int=None):
+            if i is None:
+                return self.getTokens(PolyBotParser.EOF)
+            else:
+                return self.getToken(PolyBotParser.EOF, i)
 
         def line(self, i:int=None):
             if i is None:
@@ -191,31 +218,43 @@ class PolyBotParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 42 
+            self.state = 53 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 36
+                self.state = 44
                 self.line()
-                self.state = 38 
+                self.state = 51
                 self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                while True:
-                    self.state = 37
-                    self.match(PolyBotParser.T__0)
-                    self.state = 40 
+                token = self._input.LA(1)
+                if token in [PolyBotParser.EOF]:
+                    self.state = 45
+                    self.match(PolyBotParser.EOF)
+                    pass
+                elif token in [PolyBotParser.T__0]:
+                    self.state = 47 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not (_la==PolyBotParser.T__0):
-                        break
+                    while True:
+                        self.state = 46
+                        self.match(PolyBotParser.T__0)
+                        self.state = 49 
+                        self._errHandler.sync(self)
+                        _la = self._input.LA(1)
+                        if not (_la==PolyBotParser.T__0):
+                            break
 
-                self.state = 44 
+                    pass
+                else:
+                    raise NoViableAltException(self)
+
+                self.state = 55 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << PolyBotParser.T__2) | (1 << PolyBotParser.T__3) | (1 << PolyBotParser.T__4) | (1 << PolyBotParser.T__6) | (1 << PolyBotParser.T__7) | (1 << PolyBotParser.T__8) | (1 << PolyBotParser.T__9) | (1 << PolyBotParser.T__10) | (1 << PolyBotParser.T__11) | (1 << PolyBotParser.VALID_ID) | (1 << PolyBotParser.BBOX))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << PolyBotParser.T__2) | (1 << PolyBotParser.T__3) | (1 << PolyBotParser.T__4) | (1 << PolyBotParser.T__6) | (1 << PolyBotParser.T__7) | (1 << PolyBotParser.T__8) | (1 << PolyBotParser.T__9) | (1 << PolyBotParser.T__10) | (1 << PolyBotParser.T__11) | (1 << PolyBotParser.T__12) | (1 << PolyBotParser.T__13) | (1 << PolyBotParser.VALID_ID) | (1 << PolyBotParser.LEFT_SQUARE) | (1 << PolyBotParser.BBOX) | (1 << PolyBotParser.RAND))) != 0)):
                     break
 
-            self.state = 46
+            self.state = 57
             self.match(PolyBotParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -276,6 +315,14 @@ class PolyBotParser ( Parser ):
             return self.getTypedRuleContext(PolyBotParser.ExprContext,0)
 
 
+        def equall(self):
+            return self.getTypedRuleContext(PolyBotParser.EquallContext,0)
+
+
+        def centroidl(self):
+            return self.getTypedRuleContext(PolyBotParser.CentroidlContext,0)
+
+
         def getRuleIndex(self):
             return PolyBotParser.RULE_line
 
@@ -293,73 +340,85 @@ class PolyBotParser ( Parser ):
         localctx = PolyBotParser.LineContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_line)
         try:
-            self.state = 59
+            self.state = 72
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 48
+                self.state = 59
                 self.assign()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 49
+                self.state = 60
                 self.printl()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 50
+                self.state = 61
                 self.comment()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 51
+                self.state = 62
                 self.colorl()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 52
+                self.state = 63
                 self.areal()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 53
+                self.state = 64
                 self.perimeterl()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 54
+                self.state = 65
                 self.verticesl()
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 55
+                self.state = 66
                 self.insidel()
                 pass
 
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
-                self.state = 56
+                self.state = 67
                 self.drawl()
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
-                self.state = 57
+                self.state = 68
                 self.regularl()
                 pass
 
             elif la_ == 11:
                 self.enterOuterAlt(localctx, 11)
-                self.state = 58
+                self.state = 69
                 self.expr(0)
+                pass
+
+            elif la_ == 12:
+                self.enterOuterAlt(localctx, 12)
+                self.state = 70
+                self.equall()
+                pass
+
+            elif la_ == 13:
+                self.enterOuterAlt(localctx, 13)
+                self.state = 71
+                self.centroidl()
                 pass
 
 
@@ -392,8 +451,19 @@ class PolyBotParser ( Parser ):
             return self.getTypedRuleContext(PolyBotParser.IdentifierContext,0)
 
 
-        def INT(self):
-            return self.getToken(PolyBotParser.INT, 0)
+        def pointlist(self):
+            return self.getTypedRuleContext(PolyBotParser.PointlistContext,0)
+
+
+        def RAND(self):
+            return self.getToken(PolyBotParser.RAND, 0)
+
+        def integer(self):
+            return self.getTypedRuleContext(PolyBotParser.IntegerContext,0)
+
+
+        def INTERSECTION(self):
+            return self.getToken(PolyBotParser.INTERSECTION, 0)
 
         def UNION(self):
             return self.getToken(PolyBotParser.UNION, 0)
@@ -418,64 +488,74 @@ class PolyBotParser ( Parser ):
         self.enterRecursionRule(localctx, 4, self.RULE_expr, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 65
+            self.state = 81
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [PolyBotParser.BBOX]:
-                self.state = 62
+                self.state = 75
                 self.match(PolyBotParser.BBOX)
-                self.state = 63
-                self.expr(2)
+                self.state = 76
+                self.expr(4)
                 pass
             elif token in [PolyBotParser.VALID_ID]:
-                self.state = 64
+                self.state = 77
                 self.identifier()
+                pass
+            elif token in [PolyBotParser.LEFT_SQUARE]:
+                self.state = 78
+                self.pointlist()
+                pass
+            elif token in [PolyBotParser.RAND]:
+                self.state = 79
+                self.match(PolyBotParser.RAND)
+                self.state = 80
+                self.integer()
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 75
+            self.state = 91
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 73
+                    self.state = 89
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
                     if la_ == 1:
                         localctx = PolyBotParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 67
-                        if not self.precpred(self._ctx, 4):
+                        self.state = 83
+                        if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 68
-                        self.match(PolyBotParser.INT)
-                        self.state = 69
-                        self.expr(5)
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
+                        self.state = 84
+                        self.match(PolyBotParser.INTERSECTION)
+                        self.state = 85
+                        self.expr(7)
                         pass
 
                     elif la_ == 2:
                         localctx = PolyBotParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 70
-                        if not self.precpred(self._ctx, 3):
+                        self.state = 86
+                        if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 71
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
+                        self.state = 87
                         self.match(PolyBotParser.UNION)
-                        self.state = 72
-                        self.expr(4)
+                        self.state = 88
+                        self.expr(6)
                         pass
 
              
-                self.state = 77
+                self.state = 93
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -483,6 +563,67 @@ class PolyBotParser ( Parser ):
             self._errHandler.recover(self, re)
         finally:
             self.unrollRecursionContexts(_parentctx)
+        return localctx
+
+
+    class PointlistContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LEFT_SQUARE(self):
+            return self.getToken(PolyBotParser.LEFT_SQUARE, 0)
+
+        def RIGHT_SQUARE(self):
+            return self.getToken(PolyBotParser.RIGHT_SQUARE, 0)
+
+        def point(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PolyBotParser.PointContext)
+            else:
+                return self.getTypedRuleContext(PolyBotParser.PointContext,i)
+
+
+        def getRuleIndex(self):
+            return PolyBotParser.RULE_pointlist
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPointlist" ):
+                return visitor.visitPointlist(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def pointlist(self):
+
+        localctx = PolyBotParser.PointlistContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_pointlist)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 94
+            self.match(PolyBotParser.LEFT_SQUARE)
+            self.state = 98
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==PolyBotParser.NUM:
+                self.state = 95
+                self.point()
+                self.state = 100
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 101
+            self.match(PolyBotParser.RIGHT_SQUARE)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
         return localctx
 
 
@@ -496,17 +637,8 @@ class PolyBotParser ( Parser ):
             return self.getTypedRuleContext(PolyBotParser.IdentifierContext,0)
 
 
-        def LEFT_SQUARE(self):
-            return self.getToken(PolyBotParser.LEFT_SQUARE, 0)
-
-        def RIGHT_SQUARE(self):
-            return self.getToken(PolyBotParser.RIGHT_SQUARE, 0)
-
-        def point(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(PolyBotParser.PointContext)
-            else:
-                return self.getTypedRuleContext(PolyBotParser.PointContext,i)
+        def expr(self):
+            return self.getTypedRuleContext(PolyBotParser.ExprContext,0)
 
 
         def getRuleIndex(self):
@@ -524,28 +656,15 @@ class PolyBotParser ( Parser ):
     def assign(self):
 
         localctx = PolyBotParser.AssignContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_assign)
-        self._la = 0 # Token type
+        self.enterRule(localctx, 8, self.RULE_assign)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 78
+            self.state = 103
             self.identifier()
-            self.state = 79
+            self.state = 104
             self.match(PolyBotParser.T__1)
-            self.state = 80
-            self.match(PolyBotParser.LEFT_SQUARE)
-            self.state = 84
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==PolyBotParser.NUM:
-                self.state = 81
-                self.point()
-                self.state = 86
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 87
-            self.match(PolyBotParser.RIGHT_SQUARE)
+            self.state = 105
+            self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -561,8 +680,8 @@ class PolyBotParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def identifier(self):
-            return self.getTypedRuleContext(PolyBotParser.IdentifierContext,0)
+        def expr(self):
+            return self.getTypedRuleContext(PolyBotParser.ExprContext,0)
 
 
         def QMARK(self, i:int=None):
@@ -590,25 +709,25 @@ class PolyBotParser ( Parser ):
     def printl(self):
 
         localctx = PolyBotParser.PrintlContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_printl)
+        self.enterRule(localctx, 10, self.RULE_printl)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 89
+            self.state = 107
             self.match(PolyBotParser.T__2)
-            self.state = 95
+            self.state = 113
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [PolyBotParser.QMARK]:
-                self.state = 90
+                self.state = 108
                 self.match(PolyBotParser.QMARK)
-                self.state = 91
+                self.state = 109
                 self.string()
-                self.state = 92
+                self.state = 110
                 self.match(PolyBotParser.QMARK)
                 pass
-            elif token in [PolyBotParser.VALID_ID]:
-                self.state = 94
-                self.identifier()
+            elif token in [PolyBotParser.VALID_ID, PolyBotParser.LEFT_SQUARE, PolyBotParser.BBOX, PolyBotParser.RAND]:
+                self.state = 112
+                self.expr(0)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -647,12 +766,12 @@ class PolyBotParser ( Parser ):
     def comment(self):
 
         localctx = PolyBotParser.CommentContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_comment)
+        self.enterRule(localctx, 12, self.RULE_comment)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 97
+            self.state = 115
             self.match(PolyBotParser.T__3)
-            self.state = 98
+            self.state = 116
             self.string()
         except RecognitionException as re:
             localctx.exception = re
@@ -698,20 +817,20 @@ class PolyBotParser ( Parser ):
     def colorl(self):
 
         localctx = PolyBotParser.ColorlContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_colorl)
+        self.enterRule(localctx, 14, self.RULE_colorl)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 100
+            self.state = 118
             self.match(PolyBotParser.T__4)
-            self.state = 101
+            self.state = 119
             self.identifier()
-            self.state = 102
+            self.state = 120
             self.match(PolyBotParser.T__5)
-            self.state = 103
+            self.state = 121
             self.match(PolyBotParser.LEFT_BRACE)
-            self.state = 104
+            self.state = 122
             self.color()
-            self.state = 105
+            self.state = 123
             self.match(PolyBotParser.RIGHT_BRACE)
         except RecognitionException as re:
             localctx.exception = re
@@ -728,8 +847,8 @@ class PolyBotParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def identifier(self):
-            return self.getTypedRuleContext(PolyBotParser.IdentifierContext,0)
+        def expr(self):
+            return self.getTypedRuleContext(PolyBotParser.ExprContext,0)
 
 
         def getRuleIndex(self):
@@ -747,13 +866,13 @@ class PolyBotParser ( Parser ):
     def areal(self):
 
         localctx = PolyBotParser.ArealContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_areal)
+        self.enterRule(localctx, 16, self.RULE_areal)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 107
+            self.state = 125
             self.match(PolyBotParser.T__6)
-            self.state = 108
-            self.identifier()
+            self.state = 126
+            self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -769,8 +888,8 @@ class PolyBotParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def identifier(self):
-            return self.getTypedRuleContext(PolyBotParser.IdentifierContext,0)
+        def expr(self):
+            return self.getTypedRuleContext(PolyBotParser.ExprContext,0)
 
 
         def getRuleIndex(self):
@@ -788,13 +907,13 @@ class PolyBotParser ( Parser ):
     def perimeterl(self):
 
         localctx = PolyBotParser.PerimeterlContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_perimeterl)
+        self.enterRule(localctx, 18, self.RULE_perimeterl)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 110
+            self.state = 128
             self.match(PolyBotParser.T__7)
-            self.state = 111
-            self.identifier()
+            self.state = 129
+            self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -810,8 +929,8 @@ class PolyBotParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def identifier(self):
-            return self.getTypedRuleContext(PolyBotParser.IdentifierContext,0)
+        def expr(self):
+            return self.getTypedRuleContext(PolyBotParser.ExprContext,0)
 
 
         def getRuleIndex(self):
@@ -829,13 +948,13 @@ class PolyBotParser ( Parser ):
     def verticesl(self):
 
         localctx = PolyBotParser.VerticeslContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_verticesl)
+        self.enterRule(localctx, 20, self.RULE_verticesl)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 113
+            self.state = 131
             self.match(PolyBotParser.T__8)
-            self.state = 114
-            self.identifier()
+            self.state = 132
+            self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -851,11 +970,11 @@ class PolyBotParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def identifier(self, i:int=None):
+        def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(PolyBotParser.IdentifierContext)
+                return self.getTypedRuleContexts(PolyBotParser.ExprContext)
             else:
-                return self.getTypedRuleContext(PolyBotParser.IdentifierContext,i)
+                return self.getTypedRuleContext(PolyBotParser.ExprContext,i)
 
 
         def getRuleIndex(self):
@@ -873,17 +992,17 @@ class PolyBotParser ( Parser ):
     def insidel(self):
 
         localctx = PolyBotParser.InsidelContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_insidel)
+        self.enterRule(localctx, 22, self.RULE_insidel)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 116
+            self.state = 134
             self.match(PolyBotParser.T__9)
-            self.state = 117
-            self.identifier()
-            self.state = 118
+            self.state = 135
+            self.expr(0)
+            self.state = 136
             self.match(PolyBotParser.T__5)
-            self.state = 119
-            self.identifier()
+            self.state = 137
+            self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -909,11 +1028,11 @@ class PolyBotParser ( Parser ):
             return self.getTypedRuleContext(PolyBotParser.FilenameContext,0)
 
 
-        def identifier(self, i:int=None):
+        def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(PolyBotParser.IdentifierContext)
+                return self.getTypedRuleContexts(PolyBotParser.ExprContext)
             else:
-                return self.getTypedRuleContext(PolyBotParser.IdentifierContext,i)
+                return self.getTypedRuleContext(PolyBotParser.ExprContext,i)
 
 
         def getRuleIndex(self):
@@ -931,27 +1050,27 @@ class PolyBotParser ( Parser ):
     def drawl(self):
 
         localctx = PolyBotParser.DrawlContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_drawl)
+        self.enterRule(localctx, 24, self.RULE_drawl)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 121
+            self.state = 139
             self.match(PolyBotParser.T__10)
-            self.state = 122
+            self.state = 140
             self.match(PolyBotParser.QMARK)
-            self.state = 123
+            self.state = 141
             self.filename()
-            self.state = 124
+            self.state = 142
             self.match(PolyBotParser.QMARK)
-            self.state = 127 
+            self.state = 145 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 125
+                self.state = 143
                 self.match(PolyBotParser.T__5)
-                self.state = 126
-                self.identifier()
-                self.state = 129 
+                self.state = 144
+                self.expr(0)
+                self.state = 147 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==PolyBotParser.T__5):
@@ -972,8 +1091,8 @@ class PolyBotParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def identifier(self):
-            return self.getTypedRuleContext(PolyBotParser.IdentifierContext,0)
+        def expr(self):
+            return self.getTypedRuleContext(PolyBotParser.ExprContext,0)
 
 
         def getRuleIndex(self):
@@ -991,13 +1110,102 @@ class PolyBotParser ( Parser ):
     def regularl(self):
 
         localctx = PolyBotParser.RegularlContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_regularl)
+        self.enterRule(localctx, 26, self.RULE_regularl)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 131
+            self.state = 149
             self.match(PolyBotParser.T__11)
-            self.state = 132
-            self.identifier()
+            self.state = 150
+            self.expr(0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class EquallContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PolyBotParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PolyBotParser.ExprContext,i)
+
+
+        def getRuleIndex(self):
+            return PolyBotParser.RULE_equall
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEquall" ):
+                return visitor.visitEquall(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def equall(self):
+
+        localctx = PolyBotParser.EquallContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 28, self.RULE_equall)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 152
+            self.match(PolyBotParser.T__12)
+            self.state = 153
+            self.expr(0)
+            self.state = 154
+            self.match(PolyBotParser.T__5)
+            self.state = 155
+            self.expr(0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class CentroidlContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def expr(self):
+            return self.getTypedRuleContext(PolyBotParser.ExprContext,0)
+
+
+        def getRuleIndex(self):
+            return PolyBotParser.RULE_centroidl
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCentroidl" ):
+                return visitor.visitCentroidl(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def centroidl(self):
+
+        localctx = PolyBotParser.CentroidlContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 30, self.RULE_centroidl)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 157
+            self.match(PolyBotParser.T__13)
+            self.state = 158
+            self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1034,12 +1242,12 @@ class PolyBotParser ( Parser ):
     def point(self):
 
         localctx = PolyBotParser.PointContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_point)
+        self.enterRule(localctx, 32, self.RULE_point)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 134
+            self.state = 160
             self.match(PolyBotParser.NUM)
-            self.state = 135
+            self.state = 161
             self.match(PolyBotParser.NUM)
         except RecognitionException as re:
             localctx.exception = re
@@ -1077,14 +1285,14 @@ class PolyBotParser ( Parser ):
     def color(self):
 
         localctx = PolyBotParser.ColorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_color)
+        self.enterRule(localctx, 34, self.RULE_color)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 137
+            self.state = 163
             self.match(PolyBotParser.NUM)
-            self.state = 138
+            self.state = 164
             self.match(PolyBotParser.NUM)
-            self.state = 139
+            self.state = 165
             self.match(PolyBotParser.NUM)
         except RecognitionException as re:
             localctx.exception = re
@@ -1117,25 +1325,25 @@ class PolyBotParser ( Parser ):
     def string(self):
 
         localctx = PolyBotParser.StringContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_string)
+        self.enterRule(localctx, 36, self.RULE_string)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 144
+            self.state = 170
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 141
+                    self.state = 167
                     _la = self._input.LA(1)
-                    if _la <= 0 or _la==PolyBotParser.T__0 or _la==PolyBotParser.T__12:
+                    if _la <= 0 or _la==PolyBotParser.T__0 or _la==PolyBotParser.T__14:
                         self._errHandler.recoverInline(self)
                     else:
                         self._errHandler.reportMatch(self)
                         self.consume() 
-                self.state = 146
+                self.state = 172
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1170,10 +1378,10 @@ class PolyBotParser ( Parser ):
     def filename(self):
 
         localctx = PolyBotParser.FilenameContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_filename)
+        self.enterRule(localctx, 38, self.RULE_filename)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 147
+            self.state = 173
             self.match(PolyBotParser.FNAME)
         except RecognitionException as re:
             localctx.exception = re
@@ -1208,11 +1416,49 @@ class PolyBotParser ( Parser ):
     def identifier(self):
 
         localctx = PolyBotParser.IdentifierContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_identifier)
+        self.enterRule(localctx, 40, self.RULE_identifier)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 149
+            self.state = 175
             self.match(PolyBotParser.VALID_ID)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class IntegerContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def INT(self):
+            return self.getToken(PolyBotParser.INT, 0)
+
+        def getRuleIndex(self):
+            return PolyBotParser.RULE_integer
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInteger" ):
+                return visitor.visitInteger(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def integer(self):
+
+        localctx = PolyBotParser.IntegerContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 42, self.RULE_integer)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 177
+            self.match(PolyBotParser.INT)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1235,11 +1481,11 @@ class PolyBotParser ( Parser ):
 
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 4)
+                return self.precpred(self._ctx, 6)
          
 
             if predIndex == 1:
-                return self.precpred(self._ctx, 3)
+                return self.precpred(self._ctx, 5)
          
 
 

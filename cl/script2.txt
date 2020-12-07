@@ -1,6 +1,8 @@
 p := [ 0 0 1 1 0 2]
 regular p
 print p
-p2 := [0 0]
-
+color p, {0 1 0}
+draw "hola.png", p, #p
+p2 := [0 -1]
+draw "p.png", p, p2
 inside p, p2

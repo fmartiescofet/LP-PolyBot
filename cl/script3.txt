@@ -1,0 +1,35 @@
+p1 := [0 0  0 1  1 1  0.2 0.8]
+color p1, {1 0 0}
+print p1
+area p1
+perimeter p1
+vertices p1
+centroid p1
+
+print "---"
+
+p2 := [0 0  1 0  1 1]
+color p2, {0 1 0}
+print p2
+equal p1, p2
+inside p1, p2
+inside [0.8 0.2], p2
+
+draw "image.png", p1, p2
+
+print "---"
+equal p1 + p2, #p2
+
+print p1 + p2
+print "hola"
+p3 := [0 0 1 0 1 1 0.5 0.5 0 1 0 0.5]
+print p3
+
+print "------"
+p4 := []
+print #p4
+centroid p4
+
+print "-----"
+r := !5
+print r

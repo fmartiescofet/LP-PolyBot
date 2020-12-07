@@ -1,4 +1,5 @@
 import math
+import random
 from PIL import Image, ImageDraw, ImageColor
 
 class WrongArgumentException(Exception):
@@ -47,9 +48,13 @@ class ConvexPolygon:
         else:
             self.color = (0,0,0)
     
+    def __eq__(self,other):
+        if isinstance(other, ConvexPolygon):
+            return self.points == other.points
+        return False
+    
     def inside(self, point):
         n = len(self.points)
-        print(point.x,point.y)
         if n == 0: return False
         if n == 1:
             return self.points[0] == point
@@ -85,16 +90,18 @@ class ConvexPolygon:
         """
         TODO: Pensar que passa en cas llista buida
         """
+        if len(self.points) == 0: return ConvexPolygon.build_from_points([])
         Xs = [p.x for p in self.points]
         Ys = [p.y for p in self.points]
         l = [Point(min(Xs),min(Ys)), Point(min(Xs),max(Ys)), Point(max(Xs),min(Ys)),Point(max(Xs),max(Ys))]
-        return ConvexPolygon.build_from_points(l)
+        return ConvexPolygon.build_from_points(l,self.color)
         #return (min(Xs),max(Xs),min(Ys),max(Ys))
     
     def bounding_box_tuple(self):
         """
         TODO: Pensar que passa en cas llista buida
         """
+        if len(self.points) == 0: return (0,0,0,0)
         Xs = [p.x for p in self.points]
         Ys = [p.y for p in self.points]
         return (min(Xs),max(Xs),min(Ys),max(Ys))
@@ -104,6 +111,7 @@ class ConvexPolygon:
         TODO: Pensar que passa en cas llista buida
         """
         n = len(self.points)
+        if n == 0: return Point(0,0)
         if n == 1: return self.points[0]
         if n == 2:
             x = (self.points[0].x + self.points[1].x) /2.0
@@ -123,7 +131,7 @@ class ConvexPolygon:
     
     def is_regular(self):
         """
-        We assume that a polygon of 1 or 2 vertexs is regular
+        We assume that a polygon of 0, 1 or 2 vertexs is regular
         """
         n = len(self.points)
         if (n < 3): return True
@@ -133,6 +141,15 @@ class ConvexPolygon:
             if Point.distance(self.points[i],self.points[(i+1)%n]) != side: return False
         return True
     
+
+    @staticmethod
+    def random_polygon(n):
+        l = []
+        random.seed()
+        for i in range (n):
+            l.append(Point(random.uniform(0,1),random.uniform(0,1)))
+        print (l)
+        return ConvexPolygon.build_from_points(l)
 
     @staticmethod
     def union(polygon1, polygon2):
@@ -145,23 +162,32 @@ class ConvexPolygon:
     
     @staticmethod
     def draw_polygons(polygons, filename="image.png"):
+        """
+        TODO: S'ha de mantenir l'aspect ratio
+        """
         bboxes = [pol.bounding_box_tuple() for pol in polygons]
         x_min = min([b[0] for b in bboxes])
         x_max = max([b[1] for b in bboxes])
         y_min = min([b[2] for b in bboxes])
         y_max = max([b[3] for b in bboxes])
-        print(bboxes)
+        if (x_max - x_min > y_max - y_min):
+            add = x_max - x_min - (y_max - y_min)
+            y_max += add/2.0
+            y_min -= add/2.0
+        elif (x_max - x_min < y_max - y_min):
+            add = y_max - y_min - (x_max - x_min)
+            x_max += add/2.0
+            x_min -= add/2.0
 
         img = Image.new('RGB', (400, 400), 'White')
         dib = ImageDraw.Draw(img)
-        i=0
         for polygon in polygons:
             pol = [(1+397*(p.x-x_min)/(x_max-x_min), 398-397*(p.y-y_min)/(y_max-y_min)) for p in polygon.points]
-            print(pol)
-            dib.polygon(pol,outline=tuple([int(255*x) for x in polygon.color]))
+            if len(pol) == 1:
+                dib.point(pol, fill=tuple([int(255*x) for x in polygon.color]))
+            elif len(pol) >= 2:
+                dib.polygon(pol,outline=tuple([int(255*x) for x in polygon.color]))
             
-            i+=1
-
         img.save(filename)
 
 
@@ -177,6 +203,7 @@ class ConvexPolygon:
         # Leftest point, in case of tie the lowest one
         p1 = min(points, key=lambda p: (p.x, p.y))
         l = [p for p in points if p != p1]
+        #print(p1,l)
         """for e in map(lambda p: ((p.y - p1.y) / (p.x - p1.x),
                                 (p.y - p1.y)**2 + (p.x - p1.x)**2) if (p.x != p1.x) else (math.inf,
                                                                                           (p.y - p1.y)**2 + (p.x - p1.x)**2),
@@ -184,13 +211,13 @@ class ConvexPolygon:
             print(e)"""
         l.sort(reverse=True,
                key=lambda p: ((p.y - p1.y) / (p.x - p1.x),
-                              (p.y - p1.y)**2 + (p.x - p1.x)**2) if p.x != p1.x else (math.inf,
-                                                                                      (p.y - p1.y)**2 + (p.x - p1.x)**2))
-
+                              -(p.y - p1.y)**2 - (p.x - p1.x)**2) if p.x != p1.x else (math.inf,
+                                                                                      -(p.y - p1.y)**2 - (p.x - p1.x)**2))
+        #print (l)
 
         q = [p1]
         for point in l:
-            while len(q) > 1 and Point.ccw(q[-2], q[-1], point) > 0:
+            while len(q) > 1 and Point.ccw(q[-2], q[-1], point) >= 0:
                 q.pop()
             q.append(point)
 

@@ -24,6 +24,11 @@ class PolyBotVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PolyBotParser#pointlist.
+    def visitPointlist(self, ctx:PolyBotParser.PointlistContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PolyBotParser#assign.
     def visitAssign(self, ctx:PolyBotParser.AssignContext):
         return self.visitChildren(ctx)
@@ -74,6 +79,16 @@ class PolyBotVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PolyBotParser#equall.
+    def visitEquall(self, ctx:PolyBotParser.EquallContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PolyBotParser#centroidl.
+    def visitCentroidl(self, ctx:PolyBotParser.CentroidlContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PolyBotParser#point.
     def visitPoint(self, ctx:PolyBotParser.PointContext):
         return self.visitChildren(ctx)
@@ -96,6 +111,11 @@ class PolyBotVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PolyBotParser#identifier.
     def visitIdentifier(self, ctx:PolyBotParser.IdentifierContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PolyBotParser#integer.
+    def visitInteger(self, ctx:PolyBotParser.IntegerContext):
         return self.visitChildren(ctx)
 
 
