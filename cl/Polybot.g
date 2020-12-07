@@ -1,11 +1,11 @@
 grammar PolyBot;
 
-root : (line (EOF | '\n'+))+ EOF;
+root : (line comment? (EOF | '\n'+))+ EOF;
 
-line : assign | printl | comment | colorl | areal | perimeterl | verticesl | insidel | drawl | regularl | expr | equall | centroidl;
+line : assign | printl | comment | colorl | areal | perimeterl | verticesl | insidel | drawl | regularl | equall | centroidl;
 
 
-expr: expr INTERSECTION expr | expr UNION expr | BBOX expr | identifier | pointlist | RAND integer;
+expr: expr INTERSECTION expr | expr UNION expr | BBOX expr | identifier | pointlist | RAND NUM;
 pointlist: LEFT_SQUARE point* RIGHT_SQUARE;
 assign: identifier ':=' expr;
 
@@ -29,15 +29,14 @@ string: ~('\r'|'\n')*;
 
 filename: FNAME;
 identifier: VALID_ID;
-integer: INT;
 
 FNAME: (DIGIT|LETTER)+ EXT;
 VALID_ID: LETTER (DIGIT|LETTER)*;
 
-INT: DIGIT+;
 NUM: MINUS? DIGIT+ ('.' DIGIT+)?;
-MINUS: '-';
 DIGIT : [0-9] ;
+
+MINUS: '-';
 LETTER : [a-zA-Z] ;
 LEFT_SQUARE : '[' ;
 RIGHT_SQUARE : ']' ;

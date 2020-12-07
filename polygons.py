@@ -162,9 +162,7 @@ class ConvexPolygon:
     
     @staticmethod
     def draw_polygons(polygons, filename="image.png"):
-        """
-        TODO: S'ha de mantenir l'aspect ratio
-        """
+        
         bboxes = [pol.bounding_box_tuple() for pol in polygons]
         x_min = min([b[0] for b in bboxes])
         x_max = max([b[1] for b in bboxes])

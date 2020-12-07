@@ -12,14 +12,21 @@ else:
 
 
 class EvalVisitor(ParseTreeVisitor):
-    def __init__(self):
-        self.symbols = {}
+    def __init__(self, symbols={}):
+        self.symbols = symbols
 
     # Visit a parse tree produced by PolyBotParser#root.
     def visitRoot(self, ctx:PolyBotParser.RootContext):
-        lines = [n for n in ctx.getChildren()]
+        lines = ctx.line()
+        text = ""
+        files = []
         for line in lines:
-            self.visit(line)
+            aux = self.visit(line)
+            if aux != '' and not aux.endswith('.png'): text += aux + "\n"
+            elif aux.endswith('.png'): files.append(aux)
+        if text != "": print (text)
+        return self.symbols, text, files
+
     
     # Visit a parse tree produced by PolyBotParser#expr.
     def visitExpr(self, ctx:PolyBotParser.ExprContext):
@@ -30,7 +37,9 @@ class EvalVisitor(ParseTreeVisitor):
             if l[0].getText() == '#':
                 return self.visit(l[1]).bounding_box()
             elif l[0].getText() == '!':
-                n = self.visit(ctx.integer())
+                n = int(l[1].getText())
+                if n < 0: 
+                    raise WrongArgumentException("Negative integer")
                 return ConvexPolygon.random_polygon(n)
         elif len(l) == 3:
             pol0 = self.visit(l[0])
@@ -52,63 +61,65 @@ class EvalVisitor(ParseTreeVisitor):
     def visitAssign(self, ctx:PolyBotParser.AssignContext):
         id = ctx.identifier().getText()
         self.symbols[id] = self.visit(ctx.expr())
+        return ''
     
     # Visit a parse tree produced by PolyBotParser#equall.
     def visitEquall(self, ctx:PolyBotParser.EquallContext):
         pol0 = self.visit(ctx.expr(0))
         pol1 = self.visit(ctx.expr(1))
         if pol0 == pol1:
-            print ('yes')
+            return 'yes'
         else:
-            print ('no')
+            return 'no'
 
 
     # Visit a parse tree produced by PolyBotParser#printl.
     def visitPrintl(self, ctx:PolyBotParser.PrintlContext):
         if ctx.expr():
             pol = self.visit(ctx.expr())
-            print (" ".join(map(str,pol.points)))
+            return " ".join(map(str,pol.points))
         elif ctx.string():
-            print(self.visit(ctx.string()))
+            return self.visit(ctx.string())
 
 
     # Visit a parse tree produced by PolyBotParser#comment.
     def visitComment(self, ctx:PolyBotParser.CommentContext):
-        return None
+        return ''
 
 
     # Visit a parse tree produced by PolyBotParser#colorl.
     def visitColorl(self, ctx:PolyBotParser.ColorlContext):
         pol = self.visit(ctx.identifier())
         pol.color = self.visit(ctx.color())
+        return ''
 
     # Visit a parse tree produced by PolyBotParser#areal.
     def visitAreal(self, ctx:PolyBotParser.ArealContext):
         pol = self.visit(ctx.expr())
-        print (format(pol.area(),".3f"))
+        return format(pol.area(),".3f")
 
     # Visit a parse tree produced by PolyBotParser#perimeterl.
     def visitPerimeterl(self, ctx:PolyBotParser.PerimeterlContext):
         pol = self.visit(ctx.expr())
-        print (format(pol.perimeter(),".3f"))
+        return format(pol.perimeter(),".3f")
     
     # Visit a parse tree produced by PolyBotParser#verticesl.
     def visitVerticesl(self, ctx:PolyBotParser.VerticeslContext):
         pol = self.visit(ctx.expr())
-        print (pol.number_vertices())
+        return str(pol.number_vertices())
     
     # Visit a parse tree produced by PolyBotParser#centroidl.
     def visitCentroidl(self, ctx:PolyBotParser.CentroidlContext):
         pol = self.visit(ctx.expr())
-        print (pol.centroid())
+        return str(pol.centroid())
         
     # Visit a parse tree produced by PolyBotParser#regularl.
     def visitRegularl(self, ctx:PolyBotParser.RegularlContext):
         pol = self.visit(ctx.expr())
         if pol.is_regular():
-            print ('yes')
+            return 'yes'
         else:
-            print ('no')
+            return 'no'
     
 
     # Visit a parse tree produced by PolyBotParser#insidel.
@@ -116,9 +127,9 @@ class EvalVisitor(ParseTreeVisitor):
         pol0 = self.visit(ctx.expr(0))
         pol1 = self.visit(ctx.expr(1))
         if pol1.inside_polygon(pol0):
-            print ('yes')
+            return 'yes'
         else:
-            print ('no')
+            return 'no'
 
 
     # Visit a parse tree produced by PolyBotParser#drawl.
@@ -128,6 +139,7 @@ class EvalVisitor(ParseTreeVisitor):
         for elem in ctx.expr():
             l.append(self.visit(elem))
         ConvexPolygon.draw_polygons(l,filename)
+        return filename
 
 
     # Visit a parse tree produced by PolyBotParser#point.
@@ -159,10 +171,6 @@ class EvalVisitor(ParseTreeVisitor):
     def visitFilename(self, ctx:PolyBotParser.FilenameContext):
         return ctx.getText()
     
-    # Visit a parse tree produced by PolyBotParser#integer.
-    def visitInteger(self, ctx:PolyBotParser.IntegerContext):
-        return int(ctx.getText())
-
 
 
 del PolyBotParser

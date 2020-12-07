@@ -114,10 +114,5 @@ class PolyBotVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PolyBotParser#integer.
-    def visitInteger(self, ctx:PolyBotParser.IntegerContext):
-        return self.visitChildren(ctx)
-
-
 
 del PolyBotParser

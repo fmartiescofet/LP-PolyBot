@@ -33,3 +33,9 @@ centroid p4
 print "-----"
 r := !5
 print r
+
+print "aqui"
+print p2
+print p1 + p2                           // convex union
+print p1 * p2                           // intersection
+equal p1 + p2, #p2
