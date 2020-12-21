@@ -1,8 +1,5 @@
-from cl.EvalVisitor import EvalVisitor
-from cl.PolyBotParser import PolyBotParser
-from cl.PolyBotLexer import PolyBotLexer
+
 import sys
-from polygons import Point, ConvexPolygon, WrongArgumentException
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 from antlr4 import *
@@ -15,6 +12,11 @@ current_dir = os.path.dirname(
             inspect.currentframe())))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
+from cl.EvalVisitor import EvalVisitor
+from cl.PolyBotParser import PolyBotParser
+from cl.PolyBotLexer import PolyBotLexer
+from polygons import Point, ConvexPolygon, WrongArgumentException
+
 
 
 # defineix una funció que saluda i que s'executarà quan el bot rebi el
