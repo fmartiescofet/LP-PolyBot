@@ -11,7 +11,7 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\"")
         buf.write("\u00b4\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
@@ -44,18 +44,18 @@ def serializedATN():
         buf.write("\32\16\2GK\5\34\17\2HK\5\36\20\2IK\5 \21\2J>\3\2\2\2J")
         buf.write("?\3\2\2\2J@\3\2\2\2JA\3\2\2\2JB\3\2\2\2JC\3\2\2\2JD\3")
         buf.write("\2\2\2JE\3\2\2\2JF\3\2\2\2JG\3\2\2\2JH\3\2\2\2JI\3\2\2")
-        buf.write("\2K\5\3\2\2\2LM\b\4\1\2MN\7!\2\2NT\5\6\4\6OT\5*\26\2P")
-        buf.write("T\5\b\5\2QR\7\"\2\2RT\7\24\2\2SL\3\2\2\2SO\3\2\2\2SP\3")
-        buf.write("\2\2\2SQ\3\2\2\2T]\3\2\2\2UV\f\b\2\2VW\7\37\2\2W\\\5\6")
-        buf.write("\4\tXY\f\7\2\2YZ\7 \2\2Z\\\5\6\4\b[U\3\2\2\2[X\3\2\2\2")
-        buf.write("\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2^\7\3\2\2\2_]\3\2\2\2`")
-        buf.write("d\7\30\2\2ac\5\"\22\2ba\3\2\2\2cf\3\2\2\2db\3\2\2\2de")
-        buf.write("\3\2\2\2eg\3\2\2\2fd\3\2\2\2gh\7\31\2\2h\t\3\2\2\2ij\5")
-        buf.write("*\26\2jk\7\4\2\2kl\5\6\4\2l\13\3\2\2\2ms\7\5\2\2no\7\34")
-        buf.write("\2\2op\5&\24\2pq\7\34\2\2qt\3\2\2\2rt\5\6\4\2sn\3\2\2")
-        buf.write("\2sr\3\2\2\2t\r\3\2\2\2uv\7\6\2\2vw\5&\24\2w\17\3\2\2")
-        buf.write("\2xy\7\7\2\2yz\5*\26\2z{\7\b\2\2{|\7\32\2\2|}\5$\23\2")
-        buf.write("}~\7\33\2\2~\21\3\2\2\2\177\u0080\7\t\2\2\u0080\u0081")
+        buf.write("\2K\5\3\2\2\2LM\b\4\1\2MN\7 \2\2NT\5\6\4\6OT\5*\26\2P")
+        buf.write("T\5\b\5\2QR\7!\2\2RT\7\24\2\2SL\3\2\2\2SO\3\2\2\2SP\3")
+        buf.write("\2\2\2SQ\3\2\2\2T]\3\2\2\2UV\f\b\2\2VW\7\36\2\2W\\\5\6")
+        buf.write("\4\tXY\f\7\2\2YZ\7\37\2\2Z\\\5\6\4\b[U\3\2\2\2[X\3\2\2")
+        buf.write("\2\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2^\7\3\2\2\2_]\3\2\2\2")
+        buf.write("`d\7\30\2\2ac\5\"\22\2ba\3\2\2\2cf\3\2\2\2db\3\2\2\2d")
+        buf.write("e\3\2\2\2eg\3\2\2\2fd\3\2\2\2gh\7\31\2\2h\t\3\2\2\2ij")
+        buf.write("\5*\26\2jk\7\4\2\2kl\5\6\4\2l\13\3\2\2\2ms\7\5\2\2no\7")
+        buf.write("\34\2\2op\5&\24\2pq\7\34\2\2qt\3\2\2\2rt\5\6\4\2sn\3\2")
+        buf.write("\2\2sr\3\2\2\2t\r\3\2\2\2uv\7\6\2\2vw\5&\24\2w\17\3\2")
+        buf.write("\2\2xy\7\7\2\2yz\5*\26\2z{\7\b\2\2{|\7\32\2\2|}\5$\23")
+        buf.write("\2}~\7\33\2\2~\21\3\2\2\2\177\u0080\7\t\2\2\u0080\u0081")
         buf.write("\5\6\4\2\u0081\23\3\2\2\2\u0082\u0083\7\n\2\2\u0083\u0084")
         buf.write("\5\6\4\2\u0084\25\3\2\2\2\u0085\u0086\7\13\2\2\u0086\u0087")
         buf.write("\5\6\4\2\u0087\27\3\2\2\2\u0088\u0089\7\f\2\2\u0089\u008a")
@@ -93,7 +93,7 @@ class PolyBotParser ( Parser ):
                      "'draw'", "'regular'", "'equal'", "'centroid'", "'\r'", 
                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                      "'-'", "<INVALID>", "'['", "']'", "'{'", "'}'", "'\"'", 
-                     "'.'", "'.png'", "'*'", "'+'", "'#'", "'!'" ]
+                     "'.'", "'*'", "'+'", "'#'", "'!'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
@@ -101,8 +101,8 @@ class PolyBotParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "FNAME", "VALID_ID", "NUM", "DIGIT", "MINUS", "LETTER", 
                       "LEFT_SQUARE", "RIGHT_SQUARE", "LEFT_BRACE", "RIGHT_BRACE", 
-                      "QMARK", "DOT", "EXT", "INTERSECTION", "UNION", "BBOX", 
-                      "RAND", "WS" ]
+                      "QMARK", "DOT", "INTERSECTION", "UNION", "BBOX", "RAND", 
+                      "WS" ]
 
     RULE_root = 0
     RULE_line = 1
@@ -159,12 +159,11 @@ class PolyBotParser ( Parser ):
     RIGHT_BRACE=25
     QMARK=26
     DOT=27
-    EXT=28
-    INTERSECTION=29
-    UNION=30
-    BBOX=31
-    RAND=32
-    WS=33
+    INTERSECTION=28
+    UNION=29
+    BBOX=30
+    RAND=31
+    WS=32
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)

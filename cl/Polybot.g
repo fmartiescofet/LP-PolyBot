@@ -32,7 +32,7 @@ string: ~('\r'|'\n')*;
 filename: FNAME;
 identifier: VALID_ID;
 
-FNAME: (DIGIT|LETTER)+ EXT;
+FNAME: (DIGIT|LETTER)+ '.png';
 VALID_ID: LETTER (DIGIT|LETTER)*;
 
 NUM: MINUS? DIGIT+ ('.' DIGIT+)?;
@@ -46,7 +46,6 @@ LEFT_BRACE : '{' ;
 RIGHT_BRACE : '}' ;
 QMARK: '"';
 DOT: '.';
-EXT: '.png';
 INTERSECTION: '*';
 UNION: '+';
 BBOX: '#';

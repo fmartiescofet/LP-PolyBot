@@ -287,6 +287,11 @@ class ConvexPolygon:
 
     @staticmethod
     def random_polygon(n):
+        """
+        Builds a polygons made with n points drawn at random in the unit square [0,1]^2
+        Input: n a Natural number
+        Complexity: n*log(n)
+        """
         l = []
         random.seed()
         for i in range(n):
@@ -296,12 +301,21 @@ class ConvexPolygon:
 
     @staticmethod
     def union(polygon1, polygon2):
+        """
+        Builds the union of two convex polygons by computing the convex hull of both polygons
+        Input: Two convex polygons
+        Complexity: (n1+n2)*log(n1+n2) where ni is the number of points of polygon i
+        """
         return ConvexPolygon.build_from_points(
             polygon1.points + polygon2.points, polygon1.color)
 
     @staticmethod
     def intersection(polygon1, polygon2):
-        """TODO"""
+        """
+        Computes the intersection of two polygons
+        Input: Two convex polygons
+        Complexity: n1*n2 where ni is the number of points of polygon i
+        """
         
         n1 = len(polygon1.points)
         n2 = len(polygon2.points)
@@ -314,7 +328,6 @@ class ConvexPolygon:
         if n1 == 2 and n2 == 2:
             intersection = Point.line_intersection(polygon1.points[0],polygon1.points[1],polygon2.points[0],polygon2.points[1])
             return ConvexPolygon.build_from_points(intersection, polygon1.color)
-        #Finish this cases
         if polygon2.inside_polygon(polygon1): 
             return ConvexPolygon.build_from_points(polygon1.points,polygon1.color)
 
@@ -353,6 +366,11 @@ class ConvexPolygon:
 
     @staticmethod
     def draw_polygons(polygons, filename="image.png"):
+        """
+        Draws a list of polygons in a file
+        Input: List of polygons, filename (optional)
+        Complexity: Linear in the number of polygons and number of points
+        """
 
         bboxes = [pol.bounding_box_tuple() for pol in polygons if pol.points]
         x_min = min([b[0] for b in bboxes if b])
@@ -391,6 +409,12 @@ class ConvexPolygon:
 
     @staticmethod
     def build_from_points(points, color=None):
+        """
+        Builds a convex polygon from a list of points using the Graham Scan algorithm
+        The list of points is the convex hull o fthe polygon ordered clockwise and taking the leftest point as reference
+        Input: List of points inside a convex polygon, color (Optional)
+        Complexity: n*log(n) where n is the length of the point list
+        """
         if len(points) < 3:
             points.sort(key=lambda p: (p.x, p.y))
             return ConvexPolygon(points, color)
@@ -398,15 +422,9 @@ class ConvexPolygon:
         # Leftest point, in case of tie the lowest one
         p1 = min(points, key=lambda p: (p.x, p.y))
         l = [p for p in points if p != p1]
-        # print(p1,l)
-        """for e in map(lambda p: ((p.y - p1.y) / (p.x - p1.x),
-                                (p.y - p1.y)**2 + (p.x - p1.x)**2) if (p.x != p1.x) else (math.inf,
-                                                                                          (p.y - p1.y)**2 + (p.x - p1.x)**2),
-                     l):
-            print(e)"""
+        
         l.sort(reverse=True, key=lambda p: ((p.y - p1.y) / (p.x - p1.x), -(p.y - p1.y)**2 -
                                             (p.x - p1.x)**2) if p.x != p1.x else (math.inf, -(p.y - p1.y)**2 - (p.x - p1.x)**2))
-        #print (l)
 
         q = [p1]
         for point in l:
