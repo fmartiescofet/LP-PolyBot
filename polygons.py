@@ -10,12 +10,12 @@ class WrongArgumentException(Exception):
 class Point:
     def __init__(self, x, y):
         """
-        Constructs a Point object from its x and y coordinates
+        Constructs a Point object from its x and y coordinates, rounded to three decimal to avoid precision problems
         Input: x and y coordinates
         Complexity: Constant
         """
-        self.x = x
-        self.y = y
+        self.x = round(x,3)
+        self.y = round(y,3)
 
     def __eq__(self, other):
         """Overrides the default implementation"""
@@ -341,26 +341,18 @@ class ConvexPolygon:
             C = []
             n2 = len(l2)
             for j in range(n2):
-                print (polygon1.points[i],polygon1.points[(i+1)%n1],l2[j],l2[(j+1)%n2])
                 if Point.ccw(polygon1.points[i],polygon1.points[(i+1)%n1],l2[j]) <= 0 and Point.ccw(polygon1.points[i],polygon1.points[(i+1)%n1],l2[(j+1)%n2]) > 0:
-                    print("1")
                     C.append(l2[j])
                     X = Point.line_intersection(polygon1.points[i],polygon1.points[(i+1)%n1],l2[j],l2[(j+1)%n2])
                     C += X
                 elif Point.ccw(polygon1.points[i],polygon1.points[(i+1)%n1],l2[j]) > 0 and Point.ccw(polygon1.points[i],polygon1.points[(i+1)%n1],l2[(j+1)%n2]) > 0:
-                    print("2")
                     pass
                 elif Point.ccw(polygon1.points[i],polygon1.points[(i+1)%n1],l2[j]) > 0 and Point.ccw(polygon1.points[i],polygon1.points[(i+1)%n1],l2[(j+1)%n2]) <= 0:
-                    print("3")
                     X = Point.line_intersection(polygon1.points[i],polygon1.points[(i+1)%n1],l2[j],l2[(j+1)%n2])
                     C += X
                 else:
-                    print("4")
                     C.append(l2[j])
             l2 = C
-            
-            print("l2: ",l2)
-            print("------")
             
         return ConvexPolygon.build_from_points(l2, polygon1.color)
 
@@ -417,6 +409,8 @@ class ConvexPolygon:
         """
         if len(points) < 3:
             points.sort(key=lambda p: (p.x, p.y))
+            if len(points) == 2 and points[0] == points[1]:
+                return ConvexPolygon([points[0]], color)
             return ConvexPolygon(points, color)
 
         # Leftest point, in case of tie the lowest one
@@ -436,9 +430,11 @@ class ConvexPolygon:
 
 
 if __name__ == "__main__":
-    #print(Point(0, 1) == Point(0, 1))
     """
-    l = [Point(0, 1), Point(2, 3), Point(1, 1), Point(0, 4), Point(0, 3)]
+    Some test cases
+    """
+    
+    l = [Point(0, 1), Point(2, 3), Point(1, 1), Point(0, 4), Point(0, 3),Point(-1,2)]
     q = ConvexPolygon.build_from_points(l)
 
     print(q.inside(Point(0,3)))
@@ -446,40 +442,27 @@ if __name__ == "__main__":
     print(q.inside(Point(0,0)))
     print(q.perimeter())
     print(q.area())
-    print(q.bounding_box())
-    print("Points: ",[(p.x,p.y) for p in q.points])
-    l = [Point(0, 0), Point(0, 0.8), Point(1, 1), Point(0.2, 0.8)]
+    print(q.bounding_box().points)
+    print(q.points)
+    l = [Point(0, 0), Point(0, 0.8), Point(1, 1), Point(0.2, 0.9)]
     pol2 = ConvexPolygon.build_from_points(l,(1,0,0))
-    ConvexPolygon.draw_polygons([q,pol2])
+    ConvexPolygon.draw_polygons([q,pol2],"q_pol2.png")
     un = ConvexPolygon.union(q,pol2)
-    print("Un:", [(p.x,p.y) for p in un.points])
-    #ConvexPolygon.draw_polygons([un])"""
+    print("Union:", un.points)
+    ConvexPolygon.draw_polygons([un],"union.png")
+    intersection = ConvexPolygon.intersection(q,pol2)
+    print("Intersection:", intersection.points)
+    ConvexPolygon.draw_polygons([intersection],"intersection.png")
 
-    """s = [(p.x+50,p.y+50) for p in q]
-    print("S:",s)
+    
 
-    img = Image.new('RGB', (100, 100), 'White')
-    dib = ImageDraw.Draw(img)
-    dib.polygon(s,fill='Orange')
-    img.save('prova.png')"""
-    #l = [Point(0, 0), Point(0, 1), Point(1, 1), Point(0.2, 0.8)]
-    # ConvexPolygon.build_from_points(l)
-    l1 = [Point(0, 0), Point(0, 1), Point(1, 0.5)]
-    p1 = ConvexPolygon.build_from_points(l1)
-    p2 = p1.bounding_box()
-    inte = ConvexPolygon.intersection(p1,p2)
-    print(p1.color)
-    print(inte.color)
-    inte.color = (1,0,0)
-    print(p1.color)
-    print(inte.color)
 
     p1 = ConvexPolygon.build_from_points([])
     l1 = [Point(1, 1), Point(1, 2), Point(2, 1.5)]
     p2 = ConvexPolygon.build_from_points(l1)
     ConvexPolygon.draw_polygons([p1,p2])
-    #exit()
-    """
+    
+    
     l1 = [Point(0, 0), Point(0, 1), Point(1, 0.5)]
     p1 = ConvexPolygon.build_from_points(l1)
     l2 = [Point(1, 0), Point(1, 1), Point(0, 0.5)]
@@ -488,17 +471,17 @@ if __name__ == "__main__":
     print("p2: ", p2.points)
     p1.color=(0,1,0)
     p2.color=(1,0,0)
-    ConvexPolygon.draw_polygons([p1,p2])
-    inte = ConvexPolygon.intersection(p1,p2)
-    ConvexPolygon.draw_polygons([inte],"int.png")
-    print("int: ", inte.points)
+    ConvexPolygon.draw_polygons([p1,p2],"p1p2.png")
+    
+    intersection = ConvexPolygon.intersection(p1,p2)
+    ConvexPolygon.draw_polygons([intersection],"intersection2.png")
+    print("Intersection: ", intersection.points)
 
-    p1 = ConvexPolygon.random_polygon(1)
-    p2 = ConvexPolygon.random_polygon(1)
+    p1 = ConvexPolygon.random_polygon(5)
+    p2 = ConvexPolygon.random_polygon(5)
 
     p1.color=(0,1,0)
     p2.color=(1,0,0)
-    ConvexPolygon.draw_polygons([p1,p2])
+    ConvexPolygon.draw_polygons([p1,p2],"random.png")
     inte = ConvexPolygon.intersection(p1,p2)
-    ConvexPolygon.draw_polygons([inte],"int.png")"""
-
+    ConvexPolygon.draw_polygons([inte],"intersection3.png")
