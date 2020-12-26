@@ -13,6 +13,7 @@ You will also need a valid Telegram bot token, which has to be stored in a plain
 To run the bot, simply execute:
 
 ```bash
+cd bot
 python3 bot.py
 ```
 
@@ -49,7 +50,7 @@ Identifiers are as usual:
 `p`, `Q`, `p1`, `p2`, `pol_gr`, ...
 
 ### Points and polygons
-Points in the commands are given by two pairs of real numbers, in standard notation, to denote the X and Y coordinates. For instance, `0 0` or `3.14 -5.5`. When printed, all real numbers must be formatted with three digits after the decimal dot.
+Points in the commands are given by two pairs of real numbers, in standard notation, to denote the X and Y coordinates. For instance, `0 0` or `3.14 -5.5`.
 
 ### Colors
 Colors in the commands are given, between curly braces, by three real numbers in [0,1], in standard notation, to denote the RGB color. For instance, `{0 0 0}` denotes black, `{1 0 0}` denotes red, and `{1 0.64 0}` denotes orange.
@@ -61,7 +62,7 @@ If the polygon identifier is new, it will create it. If it already existed, it w
 ### The `print` command
 The `print` command prints a given polygon or a text.
 
-- For polygons, the output must only contain the vertices in the convex hull of the polygon, in clockwise order, starting from the vertex will lower X (and the vertex with lower Y in case of ties).
+- For polygons, the output contains the vertices in the convex hull of the polygon, in clockwise order, starting from the vertex will lower X (and the vertex with lower Y in case of ties).
 
 - For texts, the text is given as a string of (simple) characters between quotes.
 
@@ -87,7 +88,7 @@ Given two polygons, the `inside` command prints `yes` or `no` to tell whether th
 Given two polygons, the `equal` command prints `yes` or `no` to tell whether the two polygons are the same or not.
 
 ### The `draw` command
-The `draw` command draws a list of polygons in a PNG file, each one with its associated color. The image should be of 400x400 pixels, with white background and the coordinates of the vertices should be scaled to fit in the 398x398 central part of the image, while preserving the original aspect ratio.
+The `draw` command draws a list of polygons in a PNG file, each one with its associated color. The image is of 400x400 pixels, with white background and the coordinates of the vertices are scaled to fit in the 398x398 central part of the image, while preserving the original aspect ratio.
 
 ### Operators
 `*` represents the intersection of two polygons.
@@ -101,17 +102,18 @@ The `draw` command draws a list of polygons in a PNG file, each one with its ass
 ### Errors
 For the sake of simplicity, we assume that all the inputs are valid.
 
-TODO: scripts d'exemple + comentar test.py
+There are some example scripts: `script.txt`,`script2.txt`,`script3.txt` as an example and can be tested with the `test.py` file.
 
 ## Part 3: A bot to interact with convex polygons
 This last part is an implementation of a Telegram Bot to work with convex polygons reading commands in the programming language and printing (or drawing) the results.
 The implementation of this part is in the `bot\bot.py` file.
 The bot accepts the following commands:
-* `/start`
-* `/help`
-* `/author`
-* `/lst`
-* `/readme`
+* `/start` - Welcome message
+* `/author` - Information about the author
+* `/help` - Shows list of commands
+* `/lst` - Display list of defined polygons
+* `/clean` - Delete all defined polygons
+* Any possible command line from the programming language defined above
 
 ## Author
 - [Francesc Martí Escofet](https://github.com/fmartiescofet)

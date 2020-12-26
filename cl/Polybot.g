@@ -7,7 +7,7 @@ line : assign | printl | comment | colorl | areal | perimeterl | verticesl | ins
 /*
 TODO: Parentesis en expr
 */
-expr: expr INTERSECTION expr | expr UNION expr | BBOX expr | identifier | pointlist | RAND NUM;
+expr: LEFT_PAREN expr RIGHT_PAREN| expr INTERSECTION expr | expr UNION expr | BBOX expr | identifier | pointlist | RAND NUM;
 pointlist: LEFT_SQUARE point* RIGHT_SQUARE;
 assign: identifier ':=' expr;
 
@@ -44,6 +44,8 @@ LEFT_SQUARE : '[' ;
 RIGHT_SQUARE : ']' ;
 LEFT_BRACE : '{' ;
 RIGHT_BRACE : '}' ;
+LEFT_PAREN: '(';
+RIGHT_PAREN: ')';
 QMARK: '"';
 DOT: '.';
 INTERSECTION: '*';

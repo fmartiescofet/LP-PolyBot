@@ -296,7 +296,6 @@ class ConvexPolygon:
         random.seed()
         for i in range(n):
             l.append(Point(random.uniform(0, 1), random.uniform(0, 1)))
-        print(l)
         return ConvexPolygon.build_from_points(l)
 
     @staticmethod
@@ -319,10 +318,8 @@ class ConvexPolygon:
         
         n1 = len(polygon1.points)
         n2 = len(polygon2.points)
-        print(n1,n2)
         if n1 == 0 or n2 == 0: return ConvexPolygon.build_from_points([], polygon1.color)
         if n1 == 1:
-            print(polygon2.inside_polygon(polygon1))
             if polygon2.inside_polygon(polygon1): return ConvexPolygon.build_from_points(polygon1.points, polygon1.color)
             else: return ConvexPolygon.build_from_points([], polygon1.color)
         if n2 == 1:

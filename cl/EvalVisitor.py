@@ -50,12 +50,15 @@ class EvalVisitor(ParseTreeVisitor):
                     raise WrongArgumentException("Negative integer")
                 return ConvexPolygon.random_polygon(n)
         elif len(l) == 3:
-            pol0 = self.visit(l[0])
-            pol1 = self.visit(l[2])
-            if l[1].getText() == '*':
-                return ConvexPolygon.intersection(pol0, pol1)
-            elif l[1].getText() == '+':
-                return ConvexPolygon.union(pol0, pol1)
+            if l[0].getText() == '(':
+                return self.visit(l[1])
+            else:
+                pol0 = self.visit(l[0])
+                pol1 = self.visit(l[2])
+                if l[1].getText() == '*':
+                    return ConvexPolygon.intersection(pol0, pol1)
+                elif l[1].getText() == '+':
+                    return ConvexPolygon.union(pol0, pol1)
 
     # Visit a parse tree produced by PolyBotParser#pointlist.
     def visitPointlist(self, ctx: PolyBotParser.PointlistContext):

@@ -1,5 +1,5 @@
 p23 := [ -1 0 0.5 1]
-print "hola"
+print "hello"
 print p23
 draw "i.png", p23
 color p23, {1 0 0}
@@ -10,7 +10,5 @@ p1 := [0 0  0 1  1 1  0.2 0.8]
 color p1, {1 0 0}
 print p1
 area p1
-
-
 perimeter p1
 vertices p1
