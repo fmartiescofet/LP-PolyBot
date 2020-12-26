@@ -1,8 +1,6 @@
 
-import sys
+import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-
-from antlr4 import *
 import os
 import sys
 import inspect
@@ -12,20 +10,52 @@ current_dir = os.path.dirname(
             inspect.currentframe())))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
+from antlr4 import *
 from cl.EvalVisitor import EvalVisitor
 from cl.PolyBotParser import PolyBotParser
 from cl.PolyBotLexer import PolyBotLexer
 from polygons import Point, ConvexPolygon, WrongArgumentException
 
 
+def lst(update,context):
+    if 'symbols' not in context.user_data or not context.user_data['symbols']:
+        lst_text = "There are no defined polygons"
+    else:
+        lst_text = ""
+        for polygon in context.user_data['symbols'].items():
+            lst_text += polygon[0] + " := [" + ' '.join(map(str,polygon[1].points)) + "]\n"
+    
+    context.bot.send_message(chat_id=update.effective_chat.id, text=lst_text)
 
-# defineix una funció que saluda i que s'executarà quan el bot rebi el
-# missatge /start
+def clean(update,context):
+    context.user_data['symbols'] = {}
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Deleted all identifiers")
+
+
 def start(update, context):
+    name = update.message.chat.first_name
     context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text="Hola! Soc un bot bàsic.")
+        text="Hi " + name + "! Welcome to PolyBot!")
 
+def author(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, 
+        text="PolyBot\nFrancesc Martí Escofet, 2020\nfrancesc.marti.escofet@estudiantat.upc.edu")
+
+def help(update,context):
+    help_text = """
+*Commands*
+`/start` - Welcome message
+`/author` - Information about the author
+`/help` - Shows list of commands
+`/lst` - Display list of defined polygons
+`/clean` - Delete all defined polygons
+Any possible command line defined in the README file
+"""
+    context.bot.send_message(chat_id=update.effective_chat.id, text=help_text, parse_mode=telegram.ParseMode.MARKDOWN)
+
+
+    
 
 def message_handler(update, context):
     try:
@@ -64,6 +94,12 @@ dispatcher = updater.dispatcher
 
 # indica que quan el bot rebi la comanda /start s'executi la funció start
 dispatcher.add_handler(CommandHandler('start', start))
+dispatcher.add_handler(CommandHandler('author', author))
+dispatcher.add_handler(CommandHandler('help', help))
+dispatcher.add_handler(CommandHandler('lst', lst))
+dispatcher.add_handler(CommandHandler('clean', clean))
+
+
 dispatcher.add_handler(MessageHandler(Filters.text, message_handler))
 
 # engega el bot

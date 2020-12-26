@@ -319,12 +319,15 @@ class ConvexPolygon:
         
         n1 = len(polygon1.points)
         n2 = len(polygon2.points)
-
+        print(n1,n2)
         if n1 == 0 or n2 == 0: return ConvexPolygon.build_from_points([], polygon1.color)
         if n1 == 1:
+            print(polygon2.inside_polygon(polygon1))
             if polygon2.inside_polygon(polygon1): return ConvexPolygon.build_from_points(polygon1.points, polygon1.color)
+            else: return ConvexPolygon.build_from_points([], polygon1.color)
         if n2 == 1:
             if polygon1.inside_polygon(polygon2): return ConvexPolygon.build_from_points(polygon2.points, polygon1.color)
+            else: return ConvexPolygon.build_from_points([], polygon1.color)
         if n1 == 2 and n2 == 2:
             intersection = Point.line_intersection(polygon1.points[0],polygon1.points[1],polygon2.points[0],polygon2.points[1])
             return ConvexPolygon.build_from_points(intersection, polygon1.color)
