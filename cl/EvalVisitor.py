@@ -4,7 +4,7 @@ import sys
 import inspect
 try:
     from ..polygons import *
-except:
+except BaseException:
     sys.path.append('..')
     from polygons import Point, ConvexPolygon, WrongArgumentException
 

@@ -7,7 +7,7 @@ from antlr4 import *
 
 try:
     from ..polygons import *
-except:
+except BaseException:
     sys.path.append('..')
     from polygons import Point, ConvexPolygon, WrongArgumentException
     from cl.EvalVisitor import EvalVisitor
@@ -15,19 +15,23 @@ except:
     from cl.PolyBotLexer import PolyBotLexer
 
 
-def lst(update,context):
+def lst(update, context):
     if 'symbols' not in context.user_data or not context.user_data['symbols']:
         lst_text = "There are no defined polygons"
     else:
         lst_text = ""
         for polygon in context.user_data['symbols'].items():
-            lst_text += polygon[0] + " := [" + ' '.join(map(str,polygon[1].points)) + "]\n"
-    
+            lst_text += polygon[0] + " := [" + \
+                ' '.join(map(str, polygon[1].points)) + "]\n"
+
     context.bot.send_message(chat_id=update.effective_chat.id, text=lst_text)
 
-def clean(update,context):
+
+def clean(update, context):
     context.user_data['symbols'] = {}
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Deleted all identifiers")
+    context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="Deleted all identifiers")
 
 
 def start(update, context):
@@ -36,11 +40,14 @@ def start(update, context):
         chat_id=update.effective_chat.id,
         text="Hi " + name + "! Welcome to PolyBot!")
 
+
 def author(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, 
+    context.bot.send_message(
+        chat_id=update.effective_chat.id,
         text="PolyBot\nFrancesc Martí Escofet, 2020\nfrancesc.marti.escofet@estudiantat.upc.edu")
 
-def help(update,context):
+
+def help(update, context):
     help_text = """
 *Commands*
 `/start` - Welcome message
@@ -50,10 +57,11 @@ def help(update,context):
 `/clean` - Delete all defined polygons
 Any possible command line defined in the README file
 """
-    context.bot.send_message(chat_id=update.effective_chat.id, text=help_text, parse_mode=telegram.ParseMode.MARKDOWN)
+    context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=help_text,
+        parse_mode=telegram.ParseMode.MARKDOWN)
 
-
-    
 
 def message_handler(update, context):
     try:
