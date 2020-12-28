@@ -1,10 +1,8 @@
-
 import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 import sys
 from antlr4 import *
-
 try:
     from ..polygons import *
 except BaseException:
@@ -91,14 +89,11 @@ def message_handler(update, context):
             text="Error: " + str(e))
 
 
-# declara una constant amb el access token que llegeix de token.txt
 TOKEN = open('token.txt').read().strip()
 
-# crea objectes per treballar amb Telegram
 updater = Updater(token=TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
-# indica que quan el bot rebi la comanda /start s'executi la funció start
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('author', author))
 dispatcher.add_handler(CommandHandler('help', help))
@@ -108,5 +103,4 @@ dispatcher.add_handler(CommandHandler('clean', clean))
 
 dispatcher.add_handler(MessageHandler(Filters.text, message_handler))
 
-# engega el bot
 updater.start_polling()

@@ -113,7 +113,7 @@ The bot accepts the following commands:
 * `/help` - Shows list of commands
 * `/lst` - Display list of defined polygons
 * `/clean` - Delete all defined polygons
-* Any possible command line from the programming language defined above
+* Any possible command line from the programming language defined above (starting without slash `/`)
 
 ## Author
 - [Francesc Martí Escofet](https://github.com/fmartiescofet)

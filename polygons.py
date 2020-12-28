@@ -421,7 +421,7 @@ class ConvexPolygon:
     def build_from_points(points, color=None):
         """
         Builds a convex polygon from a list of points using the Graham Scan algorithm
-        The list of points is the convex hull o fthe polygon ordered clockwise and taking the leftest point as reference
+        The list of points of the computed polygon is the convex hull of the polygon ordered clockwise and taking the leftest point as reference
         Input: List of points inside a convex polygon, color (Optional)
         Complexity: n*log(n) where n is the length of the point list
         """
