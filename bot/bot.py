@@ -3,18 +3,16 @@ import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 import sys
-import inspect
-current_dir = os.path.dirname(
-    os.path.abspath(
-        inspect.getfile(
-            inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
 from antlr4 import *
-from cl.EvalVisitor import EvalVisitor
-from cl.PolyBotParser import PolyBotParser
-from cl.PolyBotLexer import PolyBotLexer
-from polygons import Point, ConvexPolygon, WrongArgumentException
+
+try:
+    from ..polygons import *
+except:
+    sys.path.append('..')
+    from polygons import Point, ConvexPolygon, WrongArgumentException
+    from cl.EvalVisitor import EvalVisitor
+    from cl.PolyBotParser import PolyBotParser
+    from cl.PolyBotLexer import PolyBotLexer
 
 
 def lst(update,context):

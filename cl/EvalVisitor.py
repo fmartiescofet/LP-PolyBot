@@ -2,14 +2,11 @@ from antlr4 import *
 import os
 import sys
 import inspect
-current_dir = os.path.dirname(
-    os.path.abspath(
-        inspect.getfile(
-            inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-from polygons import Point, ConvexPolygon, WrongArgumentException
-
+try:
+    from ..polygons import *
+except:
+    sys.path.append('..')
+    from polygons import Point, ConvexPolygon, WrongArgumentException
 
 if __name__ is not None and "." in __name__:
     from .PolyBotParser import PolyBotParser
