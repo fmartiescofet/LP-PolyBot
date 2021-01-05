@@ -4,10 +4,8 @@ root : (line comment? (EOF | '\n'+))+ EOF;
 
 line : assign | printl | comment | colorl | areal | perimeterl | verticesl | insidel | drawl | regularl | equall | centroidl;
 
-/*
-TODO: Parentesis en expr
-*/
-expr: LEFT_PAREN expr RIGHT_PAREN| expr INTERSECTION expr | expr UNION expr | BBOX expr | identifier | pointlist | RAND NUM;
+
+expr: LEFT_PAREN expr RIGHT_PAREN| BBOX expr | expr INTERSECTION expr | expr UNION expr | identifier | pointlist | RAND NUM;
 pointlist: LEFT_SQUARE point* RIGHT_SQUARE;
 assign: identifier ':=' expr;
 

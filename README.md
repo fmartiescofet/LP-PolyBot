@@ -20,7 +20,7 @@ python3 bot.py
 and you can start chatting!
 
 ## Part 1: Class for convex polygons
-In this first part I designed and implemented a Python class named `ConvexPolygon` that is in the `polygons.py` file. I also implemented `Point` class to work with.
+In this first part I designed and implemented a Python class named `ConvexPolygon` that is in the `polygons.py` file. I also implemented `Point` class to work with. The coordinates of a point are rounded to three decimal places to avoid tolerance problems.
 
 The main ideas of the implementation are:
 * A polygon is stored as the list of points ordered clockwise taking the leftest one as reference (lowest one in case of a tie)
@@ -99,6 +99,7 @@ The `draw` command draws a list of polygons in a PNG file, each one with its ass
 
 `!n` is an operator that (applied to a natural number `n`) returns a convex polygon made with `n` points drawn at random in the unit square.
 
+The operator precedence is the following: `()`,`#`,`*`,`+`,`!`.
 ### Errors
 For the sake of simplicity, we assume that all the inputs are valid.
 

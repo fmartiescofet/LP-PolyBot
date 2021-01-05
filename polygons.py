@@ -225,7 +225,6 @@ class ConvexPolygon:
                 max(Xs), min(Ys)), Point(
                     max(Xs), max(Ys))]
         return ConvexPolygon.build_from_points(l, self.color)
-        # return (min(Xs),max(Xs),min(Ys),max(Ys))
 
     def bounding_box_tuple(self):
         """
@@ -338,6 +337,7 @@ class ConvexPolygon:
                 polygon2.points[1])
             return ConvexPolygon.build_from_points(
                 intersection, polygon1.color)
+
         if polygon2.inside_polygon(polygon1):
             return ConvexPolygon.build_from_points(
                 polygon1.points, polygon1.color)

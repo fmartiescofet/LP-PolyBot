@@ -35,7 +35,8 @@ print p1 * p2                           // intersection
 equal p1 + p2, #p2
 
 print "-----"
-p3 := #((p1 + p2) * [0 0  1 0  1 1])
+p3 := #(p1 + p2) * [0 0  1 0  1 1]
+draw "p3.png",p3
 print p3
 equal p3,#p2
 

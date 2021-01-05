@@ -45,10 +45,10 @@ def serializedATN():
         buf.write("IK\5 \21\2J>\3\2\2\2J?\3\2\2\2J@\3\2\2\2JA\3\2\2\2JB\3")
         buf.write("\2\2\2JC\3\2\2\2JD\3\2\2\2JE\3\2\2\2JF\3\2\2\2JG\3\2\2")
         buf.write("\2JH\3\2\2\2JI\3\2\2\2K\5\3\2\2\2LM\b\4\1\2MN\7\34\2\2")
-        buf.write("NO\5\6\4\2OP\7\35\2\2PX\3\2\2\2QR\7\"\2\2RX\5\6\4\6SX")
+        buf.write("NO\5\6\4\2OP\7\35\2\2PX\3\2\2\2QR\7\"\2\2RX\5\6\4\bSX")
         buf.write("\5*\26\2TX\5\b\5\2UV\7#\2\2VX\7\24\2\2WL\3\2\2\2WQ\3\2")
-        buf.write("\2\2WS\3\2\2\2WT\3\2\2\2WU\3\2\2\2Xa\3\2\2\2YZ\f\b\2\2")
-        buf.write("Z[\7 \2\2[`\5\6\4\t\\]\f\7\2\2]^\7!\2\2^`\5\6\4\b_Y\3")
+        buf.write("\2\2WS\3\2\2\2WT\3\2\2\2WU\3\2\2\2Xa\3\2\2\2YZ\f\7\2\2")
+        buf.write("Z[\7 \2\2[`\5\6\4\b\\]\f\6\2\2]^\7!\2\2^`\5\6\4\7_Y\3")
         buf.write("\2\2\2_\\\3\2\2\2`c\3\2\2\2a_\3\2\2\2ab\3\2\2\2b\7\3\2")
         buf.write("\2\2ca\3\2\2\2dh\7\30\2\2eg\5\"\22\2fe\3\2\2\2gj\3\2\2")
         buf.write("\2hf\3\2\2\2hi\3\2\2\2ik\3\2\2\2jh\3\2\2\2kl\7\31\2\2")
@@ -501,7 +501,7 @@ class PolyBotParser ( Parser ):
                 self.state = 79
                 self.match(PolyBotParser.BBOX)
                 self.state = 80
-                self.expr(4)
+                self.expr(6)
                 pass
             elif token in [PolyBotParser.VALID_ID]:
                 self.state = 81
@@ -536,26 +536,26 @@ class PolyBotParser ( Parser ):
                         localctx = PolyBotParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 87
-                        if not self.precpred(self._ctx, 6):
+                        if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
                         self.state = 88
                         self.match(PolyBotParser.INTERSECTION)
                         self.state = 89
-                        self.expr(7)
+                        self.expr(6)
                         pass
 
                     elif la_ == 2:
                         localctx = PolyBotParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 90
-                        if not self.precpred(self._ctx, 5):
+                        if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
                         self.state = 91
                         self.match(PolyBotParser.UNION)
                         self.state = 92
-                        self.expr(6)
+                        self.expr(5)
                         pass
 
              
@@ -1449,11 +1449,11 @@ class PolyBotParser ( Parser ):
 
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 6)
+                return self.precpred(self._ctx, 5)
          
 
             if predIndex == 1:
-                return self.precpred(self._ctx, 5)
+                return self.precpred(self._ctx, 4)
          
 
 
